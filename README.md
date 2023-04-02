@@ -1,21 +1,22 @@
-# Episode 2: Menus, Data-driven UI, Branding and Styling
-Material design is OK, but it's more fun if we can use our own as we want!
+# Episode 3: Sitewide data and more menus
+In this episode we're going to work with application data so we can build menus and set the title of each page
 
-## Off Camera
-I added a logo and a favicon as we're going to build this "outside-in". Also init'd a git repo. The idea here is you can `git log` to see the commit for each episode and checkout as you need.
+## Quick discussion about using Vuetify
+In the book I used Tailwind, but here I'm using Vuetify... what gives?
 
-## Material Design Options
-We can tweak things as we need:
+## Setting up app.config
+Nuxt gives us a central place for application-level data, which includes:
 
- - Get to know Vuetify docs better
- - Use different design themes (1, 2 or 3)
- - Use our own font styles overriding Vuetify
- - Tweaking colors (not something I'm going to do)
+ - The site menu
+ - Specific application links
+ - Social menu
+ - About/Description and Default meta "stuff"
 
-## Menus
-We need to add three and we'll start out hard-coding then move to more idiomatic ways of doing things:
+Every page will need this, so let's do it now!
 
- - Main (top of nav)
- - Link to Video Page
- - Footer with Social and Site (help, terms, about and so on)
+## Creating an a helper function
+We'll get our first introduction to writing composables in Nuxt - little helper functions that can be used on both the client and the server.
+
+ - The SEO composable
+
 

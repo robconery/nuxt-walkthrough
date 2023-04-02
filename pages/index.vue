@@ -5,3 +5,13 @@
     </v-list>
   </v-navigation-drawer>
 </template>
+
+<script setup>
+
+useSeo({
+  title: "Welcome!",
+  description: "Red:4 Aerospace Nuxt 3 walkthrough",
+  image: "hero.png"
+});
+
+</script>

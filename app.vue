@@ -2,7 +2,7 @@
   <v-app>
     <v-layout>
       <v-app-bar 
-        title="Application bar"
+        :title="config.title"
         color="grey-darken-4"
         flat
         >
@@ -19,10 +19,10 @@
         <v-spacer></v-spacer>
 
         <v-btn
-          v-for="icon in icons"
-          :key="icon"
+          v-for="item in config.social"
+          :key="item.title"
           class="mx-4"
-          :icon="icon"
+          :icon="item.title"
           variant="plain"
           size="small"
           color="white"
@@ -31,24 +31,20 @@
       </div>
 
       <div class="px-4 py-2 bg-black text-center w-100">
-        {{ new Date().getFullYear() }} — <strong>Red:4</strong>
+        {{ new Date().getFullYear() }} — <strong>{{ config.title }}</strong>
       </div>
   </v-footer>
   </v-app>
 </template>
 <script setup>
 
-const icons = [
-  'mdi-facebook',
-  'mdi-twitter',
-  'mdi-linkedin',
-  'mdi-instagram',
-];
+const config = useAppConfig();
 
 useHead({
   link:[
     {type:"text/css", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;800&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap", rel:"stylesheet"},
     {type:"text/css", href: "/css/custom.css", rel:"stylesheet"},
+    {rel: "shortcut icon", href: config.favicon}
   ],
 });
 
