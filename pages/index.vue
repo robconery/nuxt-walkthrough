@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer color="pink">
+  <v-navigation-drawer>
     <v-list>
       <v-list-item title="Navigation drawer"></v-list-item>
     </v-list>

@@ -1,0 +1,15 @@
+body{
+  font-family: "Open Sans";
+  line-height: 1.7;
+  font-size: 1em;
+  color: #222;
+}
+h1,h2,h3,h4,h5,h6{
+  font-family: "Inter";
+  font-weight: 700;
+  text-transform: uppercase;
+}
+h1 {
+  font-size: 2.8em;
+  line-height: 1.2;
+}
