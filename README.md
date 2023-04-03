@@ -1,22 +1,23 @@
-# Episode 3: Sitewide data and more menus
-In this episode we're going to work with application data so we can build menus and set the title of each page
+# Episode 4: Components and Wireframes
+Our home page is going to also act as our sales page and we'll want a strategy for how to layout out content there. We're not going to drop HTML directly, instead we're going to build out components!
 
-## Quick discussion about using Vuetify
-In the book I used Tailwind, but here I'm using Vuetify... what gives?
+## Encouragement
+We're moving fast, but don't give up!
 
-## Setting up app.config
-Nuxt gives us a central place for application-level data, which includes:
+## Meet components
+Everything in Vue (and therefore Nuxt) is a component!
 
- - The site menu
- - Specific application links
- - Social menu
- - About/Description and Default meta "stuff"
+ - Create a `/components` directory
 
-Every page will need this, so let's do it now!
+## Just a bit about component design
+Little reusable bits of markup and logic require a plan.
 
-## Creating an a helper function
-We'll get our first introduction to writing composables in Nuxt - little helper functions that can be used on both the client and the server.
+ - Quick review of Atomic Design principles
+ - We already have a Design System: Vuetify! But you should know that's what it is.
+ - You can create your own system on top of it
 
- - The SEO composable
+## Wireframing the home page
+We're going to make sure we can show some progress!
 
-
+ - Set up a simple `hero` component
+ - Elements of a "good sales page"

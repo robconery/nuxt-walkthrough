@@ -1,9 +1,15 @@
 <template>
-  <v-navigation-drawer>
-    <v-list>
-      <v-list-item title="Navigation drawer"></v-list-item>
-    </v-list>
-  </v-navigation-drawer>
+
+<v-layout>
+  <v-container style="max-width:1280px" class="py-12 my-12">
+    <SectionHero />
+    <SectionHeadline />
+    <SectionTextLeft />
+    <SectionTextRight />
+    <SectionHeadline />
+  </v-container>
+</v-layout>
+
 </template>
 
 <script setup>
