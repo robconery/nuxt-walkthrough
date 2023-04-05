@@ -1,16 +1,25 @@
 <template>
 
-    <v-row>
+    <v-row v-if="doc">
       <v-col cols="12" md="6" class="px-12">
-        <h1> Lorem ipsum dolor sit amet consectetur</h1>
-        <p>
-          Adipisicing elit. Fuga maiores quam dolorem animi modi, vitae beatae! Doloribus eum corrupti consectetur, voluptatem. 
-        </p>
+        <h1> 
+          {{ doc.title }}
+        </h1>
+
+         <ContentRenderer :value="doc" />
+
       </v-col>
       <v-col cols="12" md="6" class="text-center">
-        <img src="http://via.placeholder.com/640x360" alt=""  class="mx-auto rounded"/>
+        <img :src="doc.image" alt=""  class="mx-auto rounded"/>
       </v-col>
     </v-row>
 
-  
 </template>
+<script setup>
+defineProps({
+  doc: {
+    type: Object,
+    required: true
+  }
+});
+</script>
