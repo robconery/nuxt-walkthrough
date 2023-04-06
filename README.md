@@ -1,24 +1,26 @@
-# Episode 5: Simple CMS with Nuxt Content
-We have a bunch of _lorem ipsum_ but that will eventually change. We don't want to hard-code our content in our templates because Vue prefers your data (including content) to be separate! Time to investigate CMS's - this is real world stuff!
+# Episode 6: Application state with Pinia
+We’re working our way “outside in”, almost like hopping down the side of a building in Elden Ring, and we’ve reached the middle tier, descending from the components above.
 
-## Let's talk about headless CMS
-There are a number of ways to get content into a page that don't include hand-rolling your HTML.
+## Meet Pinia
+Pinia is an optional centralized state store for larger applications, and we’re going to need it!
 
- - Services like Contentful and Prismic
- - Roll your own with Strapi
- - The simplest of the lot: Nuxt Content
+ - Install Pinia and fail!
+ - Defining our first store, two ways. 
+ - Rob shares his opinion on which he prefers
 
-## Creating a simple markdown experience
-We'll replace our hero content with Nuxt Content to see how easy it is to work with the system.
+## Creating a Content Store
+Let’s centralize how we pull content so we don’t repeat ourselves.
+ 
+ - Creating the `content` store
+ - Refactoring our existing pages and components
+ - Discussion: how far do we take this?
 
- - Create a markdown document for hero
- - Get to know the document query system
- - Rob shares his opinion based on use in the wild
+## As we go along: understanding the role of reactivity
+A reactive bit of data changes across the application and is a core feature of all frontend frameworks. 
 
-## Using Nuxt Content for all of our sections
-Every section is a document! Weeee!
+ - The Reactive Pattern, quickly. Like global variables, but improved!
+ - How to make something reactive in Vue, both old school and new
+ - Dealing with confusion, Part 1
 
- - Refactor our components to work with our documents
- - Tweak the query results to make things easier to use
- - Think about scaling this as the company grows
+
 
