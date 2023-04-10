@@ -1,5 +1,5 @@
 <template>
-
+<SiteNav />
 <v-layout>
   <v-container style="max-width:1280px" class="py-12 my-12">
     <h2>{{ message }}</h2>

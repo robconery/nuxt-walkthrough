@@ -1,26 +1,27 @@
-# Episode 6: Application state with Pinia
-We’re working our way “outside in”, almost like hopping down the side of a building in Elden Ring, and we’ve reached the middle tier, descending from the components above.
+# Episode 7: Advanced Vuetify! Blocking the Course Page
+We're doin it live! We're going to use an existing site as a guide to block our page, completely, before we add any data. We'll see if we can do it all in one go.
 
-## Meet Pinia
-Pinia is an optional centralized state store for larger applications, and we’re going to need it!
+## Examining the components we'll need
+We'll go outside in and figure out what we need:
 
- - Install Pinia and fail!
- - Defining our first store, two ways. 
- - Rob shares his opinion on which he prefers
+ - Intro to dynamic routing
+ - Have a good look at the design template (which happens to be a working site)
+ - Outline/note what goes where. Use whatever tool you like.
+ - Jot down notes in a design plan _somewhere_. Or just stub the components?
 
-## Creating a Content Store
-Let’s centralize how we pull content so we don’t repeat ourselves.
+## The big stuff
+We're moving outside in, refactoring smaller as we go. We will, hopefully, move slowly and be able to back track.
  
- - Creating the `content` store
- - Refactoring our existing pages and components
- - Discussion: how far do we take this?
+ - Block the major elements (organisms)
+ - Extract the molecules
+ - Take a stab at a naming convention
 
-## As we go along: understanding the role of reactivity
-A reactive bit of data changes across the application and is a core feature of all frontend frameworks. 
+## Wiring it all up, making it work
+We won't be using live data, but we can stub some out and see if things will move the way we like.
 
- - The Reactive Pattern, quickly. Like global variables, but improved!
- - How to make something reactive in Vue, both old school and new
- - Dealing with confusion, Part 1
+ - Check the responsive design! We should do this from the start but...
+ - Create the store(s) we need, add lorem data
+ - Refactor, as needed
 
 
 

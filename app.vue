@@ -1,8 +1,6 @@
 <template>
   <v-app>
-    <v-layout>
-
-      <SiteNav />
+    <v-layout>     
 
       <v-main style="min-height: 300px;">
         <NuxtPage />
