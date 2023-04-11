@@ -7,12 +7,8 @@
     color="blue-grey-darken-4"
   ></v-app-bar>
   <v-container class="h-screen">
-    
-    <v-navigation-drawer>
-      <v-list>
-        <v-list-item title="Navigation drawer"></v-list-item>
-      </v-list>
-    </v-navigation-drawer>
+
+    <CourseNav />
 
     <v-row>
       <v-col>
@@ -21,16 +17,21 @@
     </v-row>
     <v-row>
       <v-col cols="12" md="8" class="mx-auto">
-        <h2>Lorem Ipsum Dolor</h2>
-        <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis illum qui quo culpa excepturi quam cupiditate velit aut doloribus repellendus quibusdam voluptate ea eligendi sed in sint, porro ullam quasi!
-        </p>
+        <h2>{{ lesson.title }} {{ lessonCount }}</h2>
       </v-col>
     </v-row>
   </v-container>
 </template>
 <script setup>
+import {useCourseStore} from "@/stores/course";
+const {lessonCount, course, lesson, setCourse, getLesson} = useCourseStore();
+
 const route = useRoute();
 let slug = route.params.slug;
 let id = route.params.id;
+
+await setCourse(slug);
+
+
+
 </script>

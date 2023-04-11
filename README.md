@@ -1,27 +1,31 @@
-# Episode 7: Advanced Vuetify! Blocking the Course Page
-We're doin it live! We're going to use an existing site as a guide to block our page, completely, before we add any data. We'll see if we can do it all in one go.
+# Episode 8: Course page molecules
+We have the "organisms" on our page (nav bars, drawer, etc) now it's time to go a bit deeper and add more value. We'll start with a store that our design can use.
 
-## Examining the components we'll need
-We'll go outside in and figure out what we need:
+## Creating a course store
+We'll be pulling data from somewhere and our components need to use it! Pinia!
 
- - Intro to dynamic routing
- - Have a good look at the design template (which happens to be a working site)
- - Outline/note what goes where. Use whatever tool you like.
- - Jot down notes in a design plan _somewhere_. Or just stub the components?
+ - Faster now: declaring the store
+ - Creating mock data
+ - Stubbing out methods based on our design brief
 
-## The big stuff
-We're moving outside in, refactoring smaller as we go. We will, hopefully, move slowly and be able to back track.
+## The Top Navigation
+Let's fill out the top nav stuff in our `v-app-bar`:
+
+ - Logo and collapse
+ - Course links
+ - User icon
+
+## The Module List (topics and lessons)
+I hate the word module but whatever. This is a list of all of the content in our course, sorted and organized by topic or category.
  
- - Block the major elements (organisms)
- - Extract the molecules
- - Take a stab at a naming convention
+ - The course nav, with title
+ - The lesson nav, with completed check, free indicator, and unwatched indicator (currently a play icon in our mockup)
 
-## Wiring it all up, making it work
-We won't be using live data, but we can stub some out and see if things will move the way we like.
+## The Lesson (video, text, commands) 
 
- - Check the responsive design! We should do this from the start but...
- - Create the store(s) we need, add lorem data
- - Refactor, as needed
+ - The video slide (not logged in)
+ - The lesson text
+ - Lesson command list
 
 
 
