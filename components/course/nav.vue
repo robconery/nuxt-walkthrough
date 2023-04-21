@@ -1,26 +1,34 @@
 <template>
-  <v-navigation-drawer>
+  <v-navigation-drawer v-model="course.showSideNav">
     <v-list v-for="cat in categories">
       <v-list-subheader >{{ cat }}</v-list-subheader>
-      <v-list-item v-for="lesson in categoryLessons(cat)">
-        {{ lesson.title }}
+      <v-list-item 
+        v-for="lesson in categoryLessons(cat)"
+        :to="link(lesson)"
+        :title="lesson.title"
+        >
+        <template #append v-if="lesson.free">
+          <v-icon icon="mdi-lock-open-variant" color="green"></v-icon>
+        </template>
       </v-list-item>
     </v-list>
   </v-navigation-drawer>
 </template>
 <script setup>
 import {useCourseStore} from "@/stores/course";
-const {course} = useCourseStore();
+const { lessons, course } = useCourseStore();
 
-//reactivity api
+const link = function(lesson) {
+  return `/courses/${course.slug}/${lesson.slug}`
+}
+
 const categories = computed(() => {
-  //assume sorted
-  const cats = course.lessons.map(l => l.category);
+  const cats = lessons.map(l => l.category);
   return new Set(cats);
 });
 
 const categoryLessons = function(cat){
-  return course.lessons.filter(l => l.category === cat);
-}
+  return lessons.filter(l => l.category === cat);
+};
 
 </script>

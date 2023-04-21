@@ -1,9 +1,10 @@
 <template>
   <div style="max-width:960px;" class="mx-auto py-12">
     <h2 class="text-center">
-    {{ doc.title }}
+      {{ doc.title }}
     </h2>
     <ContentRenderer :value="doc" />
+    <slot></slot>
   </div>
 </template>
 <script setup>

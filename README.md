@@ -1,12 +1,12 @@
-# Episode 8: Course page molecules
-We have the "organisms" on our page (nav bars, drawer, etc) now it's time to go a bit deeper and add more value. We'll start with a store that our design can use.
+# Episode 9: Course page molecules, part 2
+We got hung up a bit on the nav bar, but the hopefully the rest of the course page will be straightforward.
 
-## Creating a course store
-We'll be pulling data from somewhere and our components need to use it! Pinia!
+## Setting up links for the lessons
+Our routing is in place, so let's turn on the nav!
 
- - Faster now: declaring the store
- - Creating mock data
- - Stubbing out methods based on our design brief
+ - Adding a link
+ - Noting which is active
+ - Showing which is free
 
 ## The Top Navigation
 Let's fill out the top nav stuff in our `v-app-bar`:
@@ -14,12 +14,6 @@ Let's fill out the top nav stuff in our `v-app-bar`:
  - Logo and collapse
  - Course links
  - User icon
-
-## The Module List (topics and lessons)
-I hate the word module but whatever. This is a list of all of the content in our course, sorted and organized by topic or category.
- 
- - The course nav, with title
- - The lesson nav, with completed check, free indicator, and unwatched indicator (currently a play icon in our mockup)
 
 ## The Lesson (video, text, commands) 
 

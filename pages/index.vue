@@ -3,8 +3,14 @@
 <v-layout>
   <v-container style="max-width:1280px" class="py-12 my-12">
     <h2>{{ message }}</h2>
-    <SectionHero section="headline"/>
-    <SectionHeadline :doc="page.problem"/>
+    <SectionHero section="headline">
+
+        <v-btn>BOOM</v-btn>
+
+    </SectionHero>
+    <SectionHeadline :doc="page.problem">
+      
+    </SectionHeadline>
     <SectionTextLeft :doc="page.empathy"/>
     <SectionTextRight :doc="page.solution"/>
     <SectionHeadline :doc="page.cta"/>

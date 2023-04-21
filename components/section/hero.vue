@@ -5,9 +5,8 @@
         <h1> 
           {{ page[section].title }}
         </h1>
-
-         <ContentRenderer :value="page[section]" />
-
+        <ContentRenderer :value="page[section]" />
+        <slot></slot>
       </v-col>
       <v-col cols="12" md="6" class="text-center">
         <img :src="page[section].image" alt=""  class="mx-auto rounded"/>
