@@ -1,25 +1,11 @@
-# Episode 10: Adding video and text to the lesson page
-We've made our way through the first big hurdle, dealing with state management properly. Now let's add a video with lesson text, along with next/previous commands.
+# Episode 11: Refactoring and our next/previous buttons
+It's so, so easy to make a mess but the good thing, for us, is that our code will tell us (when it starts to stink) as will Nuxt. Or Vuetify!
 
-## Quick Checkin
-I just edited the first 9 videos...
+## Refactor
+We have a small bug that I didn't notice and I need to fix, which is also sparking a refactor.
 
- - Going to keep a quicker pace, less explaining
- - My process and why I'm hitting errors
- - GitHub
- - Copilot?
-
-## The video component
-We'll be using Vimeo to serve our videos, but to start off we'll use a test video (Big Buck Bunny). Along the way, we'll need to be sure...
-
- - Things layout the way we want
- - A slide is shown in place of the video when a user isn't logged in
-
-## The page text, with syntax highlighting
-Our videos will need context, including code samples! Let's see how we can add styling:
-
- - The interesting way: using Nuxt Typography
- - Our way: using the built-in Shiki code highlighter
+ - Avoiding technical debt in the name of speed
+ - Walking carefully through the valley of frameworks
 
 ## Next/Previous commands
 Every video app needs a next/previous! We'll add ours without overthinking things.
@@ -28,4 +14,5 @@ Every video app needs a next/previous! We'll add ours without overthinking thing
  - Use `findSurround` to get the next and previous pages
  - Use our own sorting method to see which we like more.
 
-
+## If we have time: styling pass
+Blocking will get us only so far as an excuse when we give updates at the end of our sprints. Marketing, sales, and managers don't care about our process - they want results!

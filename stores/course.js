@@ -11,8 +11,8 @@ export const useCourseStore = defineStore("course", {
       },
       lessons: [],
       lesson: {},
-      next: null,
-      prev: null
+      next: {},
+      prev: {}
     }
   },
 
@@ -23,7 +23,6 @@ export const useCourseStore = defineStore("course", {
     async setCourse(slug){
       const content = await queryContent(`/courses/${slug}`).findOne()
       Object.assign(this.course, content);
-      this.setLessons(slug)
     },
     async setLessons(slug){
       this.lessons.length = 0;
@@ -32,16 +31,28 @@ export const useCourseStore = defineStore("course", {
       for(let d of content){
         this.lessons.push(d);
       }
-      this.setLesson(this.lessons[0].slug)
     },
-    async setLesson(slug){
-      const found = this.lessons.find(l => l.slug === slug);
-      Object.assign(this.lesson, found);
+    async setLesson(slug, id){
+      const doc = await queryContent(`/lessons/${slug}`).where({slug: id}).findOne();
+      Object.assign(this.lesson, doc);
+    },
+    async setNextPrev(){
+
+      const found = this.lessons.find(d => d.slug === this.lesson.slug);
+      if(found){
+        let idx = this.lessons.indexOf(found);
+        if(idx > 0) {
+          Object.assign(this.prev,this.lessons[idx - 1]);      
+        }else{
+          Object.assign(this.prev,this.lessons[0]);     
+        }
+        if(idx < this.lessons.length - 1){
+          Object.assign(this.next,this.lessons[idx + 1]);
+        }else{
+          Object.assign(this.next,this.lessons[this.lessons.length - 1]);
+        }
+      }
     }
-  },
-  getters: {
-    lessonCount(state){
-      return this.lessons.length; 
-    },
+
   }
 });

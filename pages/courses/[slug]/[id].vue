@@ -51,8 +51,8 @@
     </v-row>
     <v-row>
       <v-col cols="12" md="8" class="mx-auto">
-      <h2>Lorem Ipsum</h2>
-      <ContentRenderer :value="doc" />
+      <h2>{{ lesson.title }}</h2>
+      <ContentRenderer :value="lesson" />
       </v-col>
     </v-row>
     <v-app-bar
@@ -64,12 +64,13 @@
       <v-btn
         color="white"
         variant="outlined"
-        
+        :to="navLesson(prev)"
       >Prev</v-btn>
       <v-btn
         color="white"
         variant="outlined"
         class="ml-4"
+        :to="navLesson(next)"
       >Next</v-btn>
     </v-app-bar>
   </v-container>
@@ -78,14 +79,22 @@
 import {useCourseStore} from "@/stores/course";
 import {useAuthStore} from "@/stores/auth";
 
-const {course, toggleState, lesson, setCourse } = useCourseStore();
+let {course, next, prev, toggleState, lesson, setCourse, setLessons, setLesson, setNextPrev } = useCourseStore();
 const {toggleLogin} = useAuthStore();
 
 const route = useRoute();
 let slug = route.params.slug;
+let id = route.params.id;
+
+const navLesson = function(toLesson){
+  return `/courses/${slug}/${toLesson.slug}`
+}
 
 await setCourse(slug);
+await setLessons(slug);
+await setLesson(slug, id);
+await setNextPrev();
 
-const doc = await queryContent("/test/lesson").findOne();
+
 
 </script>

@@ -4,7 +4,7 @@
   <iframe
     id="vimeo-player"
     class="w-full mx-auto"
-    :src="`https://player.vimeo.com/video/${id}`"
+    :src="`https://player.vimeo.com/video/${lesson.vimeo_id}`"
     frameborder="0"
     allow="autoplay; fullscreen"
     allowfullscreen
@@ -14,7 +14,9 @@
 </template>
 <script setup>
 import { useAuthStore } from '~~/stores/auth';
+import { useCourseStore } from '~~/stores/course';
 const {user} = useAuthStore();
+const {lesson} = useCourseStore();
 
 defineProps(["id"]);
 </script>
