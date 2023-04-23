@@ -32,7 +32,7 @@
       <v-icon color="grey-darken-1">mdi-github</v-icon>
     </v-btn>
 
-    <v-btn class="mr-4">
+    <v-btn class="mr-4" @click="toggleLogin">
       <v-avatar>
         <v-img
           src="https://cdn.vuetifyjs.com/images/john.jpg"
@@ -43,24 +43,49 @@
   </v-app-bar>
   <CourseNav />
   <v-container  v-if="lesson">
-    
     <v-row>
       <v-col>
-        <v-img src="https://via.placeholder.com/1280x720" class="mx-auto" />
+        
+        <CourseVideo id="1084537" />
       </v-col>
     </v-row>
     <v-row>
       <v-col cols="12" md="8" class="mx-auto">
+      <h2>Lorem Ipsum</h2>
+      <ContentRenderer :value="doc" />
       </v-col>
     </v-row>
+    <v-app-bar
+    flat
+    color="blue-grey-darken-4"
+    location="bottom"
+    >
+      <v-spacer></v-spacer>
+      <v-btn
+        color="white"
+        variant="outlined"
+        
+      >Prev</v-btn>
+      <v-btn
+        color="white"
+        variant="outlined"
+        class="ml-4"
+      >Next</v-btn>
+    </v-app-bar>
   </v-container>
 </template>
 <script setup>
 import {useCourseStore} from "@/stores/course";
+import {useAuthStore} from "@/stores/auth";
+
 const {course, toggleState, lesson, setCourse } = useCourseStore();
+const {toggleLogin} = useAuthStore();
 
 const route = useRoute();
 let slug = route.params.slug;
 
 await setCourse(slug);
+
+const doc = await queryContent("/test/lesson").findOne();
+
 </script>
