@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer v-model="course.showSideNav">
+  <v-navigation-drawer v-model="course.showSideNav" color="black">
     <v-list v-for="cat in categories">
       <v-list-subheader >{{ cat }}</v-list-subheader>
       <v-list-item 

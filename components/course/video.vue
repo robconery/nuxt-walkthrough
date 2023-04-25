@@ -1,5 +1,8 @@
 <template>
-<v-img src="https://via.placeholder.com/1280x720" class="mx-auto" v-if="!user.loggedIn"/>
+  <div class="text-center" v-if="!user.loggedIn">
+    <v-img src="https://via.placeholder.com/1280x720" class="mx-auto" />
+  </div>
+
 <div class="embed-container w-full" v-else>
   <iframe
     id="vimeo-player"

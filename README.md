@@ -1,18 +1,18 @@
-# Episode 11: Refactoring and our next/previous buttons
-It's so, so easy to make a mess but the good thing, for us, is that our code will tell us (when it starts to stink) as will Nuxt. Or Vuetify!
+# Episode 12: Styling
+We're going to get called into an unscheduled demo - count on it. Make your work shine before it happens! Plus: it drives us to completion!
 
-## Refactor
-We have a small bug that I didn't notice and I need to fix, which is also sparking a refactor.
+## Adding a logo
+I did this off camera but I'll walk you through some ideas
 
- - Avoiding technical debt in the name of speed
- - Walking carefully through the valley of frameworks
+ - Find yourself a design app you trust
+ - Some helpful resources
 
-## Next/Previous commands
-Every video app needs a next/previous! We'll add ours without overthinking things.
+## Setting colors
+Videos are much easier to watch on a dark background as light backgrounds can cause eyestrain over time. Plus, it makes the video pop!
 
- - Add the buttons to a bottom bar
- - Use `findSurround` to get the next and previous pages
- - Use our own sorting method to see which we like more.
+ - Adding gradient coloring to the lesson
+ - Calling out the text
+ - Adding complementary colors to the nav bits (side, top, and bottom)
 
-## If we have time: styling pass
-Blocking will get us only so far as an excuse when we give updates at the end of our sprints. Marketing, sales, and managers don't care about our process - they want results!
+## The progress bar
+We don't have the data for it just yet - but let's plugin a quick progress bar as an accent!
