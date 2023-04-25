@@ -1,9 +1,9 @@
 <template>
-  <div class="text-center" v-if="!user.loggedIn">
-    <v-img src="https://via.placeholder.com/1280x720" class="mx-auto" />
+  <div class="text-center" v-if="user.loggedIn">
+    <v-img src="https://via.placeholder.com/1280x720" width="1280" class="mx-auto" />
   </div>
 
-<div class="embed-container w-full" v-else>
+<div class="embed-container w-100" v-else style="width:1280px" color="mx-auto">
   <iframe
     id="vimeo-player"
     class="w-full mx-auto"
@@ -30,7 +30,6 @@ defineProps(["id"]);
   padding-bottom: 56.25%;
   height: 0;
   overflow: hidden;
-  max-width: 100%;
 }
 
 .embed-container iframe,

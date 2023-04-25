@@ -1,21 +1,39 @@
 <template>
-  <v-navigation-drawer v-model="course.showSideNav" color="black">
-    <v-list v-for="cat in categories">
-      <v-list-subheader >{{ cat }}</v-list-subheader>
+  <v-navigation-drawer v-model="course.showSideNav" :color="bg"  >
+    <v-list v-for="cat in categories"
+      active-class="border"
+    >
+      <v-list-subheader color="white">{{ cat }}</v-list-subheader>
       <v-list-item 
         v-for="lesson in categoryLessons(cat)"
         :to="link(lesson)"
-        :title="lesson.title"
+        color="white"
         >
         <template #append v-if="lesson.free">
           <v-icon icon="mdi-lock-open-variant" color="green"></v-icon>
         </template>
+        <v-list-item-title class="text-grey">{{ lesson.title }}</v-list-item-title>      
       </v-list-item>
     </v-list>
   </v-navigation-drawer>
 </template>
 <script setup>
 import {useCourseStore} from "@/stores/course";
+import { useDisplay } from 'vuetify'
+
+const bg = computed(() => {
+  const { name } = useDisplay();
+  switch (name.value) {
+    case 'xs': return "black"
+    case 'sm': return "black"
+    case 'md': return "black"
+    case 'lg': return "transparent"
+    case 'xl': return "transparent"
+    case 'xxl': return "transparent"
+  }
+  return "transparent"
+})
+
 const { lessons, course } = useCourseStore();
 
 const link = function(lesson) {

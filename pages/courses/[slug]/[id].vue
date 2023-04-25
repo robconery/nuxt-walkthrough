@@ -1,5 +1,5 @@
 <template>
-  <v-main class="bg-black black-gradient">
+  <v-layout class="bg-black black-gradient">
     <v-app-bar 
       id="top-nav"
       flat
@@ -44,60 +44,49 @@
         </v-avatar>
       </v-btn>
     </v-app-bar>
+    
     <v-app-bar color="black" height="8">
       <v-progress-linear
       color="blue"
       v-model="progress"
     ></v-progress-linear>
     </v-app-bar>
-    <CourseNav />
-    <v-container  v-if="lesson" class="" fluid>
-      <v-row>
-        <v-col>
-          <CourseVideo id="1084537" />
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="12" md="8" class="mx-auto">
-        <h2>{{ lesson.title }}</h2>
-        <ContentRenderer :value="lesson" />
-        </v-col>
-      </v-row>
-      <v-app-bar
-      flat
-      color="transparent"
-      location="bottom"
-      >
-        <v-spacer></v-spacer>
-        <v-btn
-          color="light-green-darken-2"
-          variant="outlined"
-          :to="navLesson(prev)"
-        >Prev</v-btn>
-        <v-btn
-          color="light-green-darken-2"
-          variant="outlined"
-          class="ml-4"
-          :to="navLesson(next)"
-        >Next</v-btn>
-      </v-app-bar>
-    </v-container>
-  </v-main>
+    
+    <CourseNav  />
+    
+    <v-main class="">
+      <v-container  v-if="lesson">
+        <v-row>
+          <v-col cols="12" class="mx-auto">
+            <CourseVideo id="1084537" />
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="12" md="8" class="mx-auto">
+          <h2>{{ lesson.title }}</h2>
+          <ContentRenderer :value="lesson" />
+          
+          </v-col>
+          
+        </v-row>
+        
+      </v-container>
+    </v-main>
+    <CourseCommands />
+
+  </v-layout>
 </template>
 <script setup>
 import {useCourseStore} from "@/stores/course";
 import {useAuthStore} from "@/stores/auth";
 
-let {course, next, prev, toggleState, lesson, setCourse, setLessons, setLesson, setNextPrev } = useCourseStore();
+let {course,  toggleState, lesson, setCourse, setLessons, setLesson, setNextPrev } = useCourseStore();
 const {toggleLogin} = useAuthStore();
 const progress = 33;
 const route = useRoute();
 let slug = route.params.slug;
 let id = route.params.id;
 
-const navLesson = function(toLesson){
-  return `/courses/${slug}/${toLesson.slug}`
-}
 
 await setCourse(slug);
 await setLessons(slug);
