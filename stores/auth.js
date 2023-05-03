@@ -5,10 +5,22 @@ export const useAuthStore = defineStore("auth", {
     return {
       user: {
         loggedIn: false,
+      },
+      dialogs: { //reactive by default 
+        login: false
       }
     }
   },
-  actions: {
+  actions: { 
+    setLoggedInUser({email, token}){
+      this.user.loggedIn = true;
+      this.user.email = email;
+      this.user.token = token;
+      console.log(this.user);
+    },
+    toggleLoginDialog(){
+      this.dialogs.login = !this.dialogs.login;
+    },
     toggleLogin(){
       this.user.loggedIn = !this.user.loggedIn;
     },
