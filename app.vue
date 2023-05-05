@@ -6,6 +6,14 @@
   </v-app>
 </template>
 <script setup>
+import { useAuthStore } from '@/stores/auth';
+const {fetchUser} = useAuthStore();
+
+onMounted(()=> {
+  fetchUser();
+});
+
+
 const config = useAppConfig();
 
 useHead({

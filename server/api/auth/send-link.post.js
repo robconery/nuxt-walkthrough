@@ -6,7 +6,7 @@ export default eventHandler(async event => {
 
   const email = body.email;
   const code = Math.floor(Math.random() * 100000); //randomize please
-console.log(code);
+  console.log(code);
   let user = await useStorage().getItem(`user:${email}`);
   if(!user){
     user = {
@@ -22,20 +22,20 @@ console.log(code);
 
   //send an email!
   try{
-    await sendMail({
-      to: email,
-      from: "rob@bigmachine.io",
-      subject: "Your login code",
-      html: `
-      <p>
-        You requested a login code (at least I hope it was you) so here you go!
-      <p>
-      <h2>
-        ${code}
-      </h2>
-      <p>Pop that into the site and off you go!</p>
-      `
-    });
+    // await sendMail({
+    //   to: email,
+    //   from: "rob@bigmachine.io",
+    //   subject: "Your login code",
+    //   html: `
+    //   <p>
+    //     You requested a login code (at least I hope it was you) so here you go!
+    //   <p>
+    //   <h2>
+    //     ${code}
+    //   </h2>
+    //   <p>Pop that into the site and off you go!</p>
+    //   `
+    // });
     return {success: true}
   }catch(err){
     console.error(err)

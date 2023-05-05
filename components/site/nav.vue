@@ -5,13 +5,9 @@
     flat
   >
   <v-spacer></v-spacer>
-  <v-btn
-    color="white"
-    variant="outlined"
-    @click="toggleLoginDialog()"
-  >Login</v-btn>
+  <User/>
   </v-app-bar>
-  <AuthLoginDialog />
+
 </template>
 
 <script setup>

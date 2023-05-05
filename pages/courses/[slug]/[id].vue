@@ -35,14 +35,7 @@
         <v-icon color="grey-darken-1">mdi-github</v-icon>
       </v-btn>
 
-      <v-btn class="mr-4" @click="toggleLogin">
-        <v-avatar>
-          <v-img
-            src="https://cdn.vuetifyjs.com/images/john.jpg"
-            alt="John"
-          ></v-img>
-        </v-avatar>
-      </v-btn>
+      <User />
     </v-app-bar>
     
     <v-app-bar color="black" height="8">

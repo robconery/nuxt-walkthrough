@@ -1,18 +1,22 @@
 <template>
-  <div class="text-center" v-if="user.loggedIn">
+  <div  v-if="user.loggedIn" style="width:1280px;height:720px">
+    <div class="embed-container w-100" style="width:1280px;height:720px">
+      <iframe
+        id="vimeo-player"
+        class="w-100 mx-auto"
+        :src="`https://player.vimeo.com/video/${lesson.vimeo_id}`"
+        frameborder="0"
+        allow="autoplay; fullscreen"
+        allowfullscreen
+        style="min-height:720px;min-width: 1280px"
+      ></iframe>
+    </div>
+  </div>
+  <div class="text-center" v-else>
     <v-img src="https://via.placeholder.com/1280x720" width="1280" class="mx-auto" />
   </div>
 
-<div class="embed-container w-100" v-else style="width:1280px" color="mx-auto">
-  <iframe
-    id="vimeo-player"
-    class="w-full mx-auto"
-    :src="`https://player.vimeo.com/video/${lesson.vimeo_id}`"
-    frameborder="0"
-    allow="autoplay; fullscreen"
-    allowfullscreen
-  ></iframe>
-</div>
+
 
 </template>
 <script setup>

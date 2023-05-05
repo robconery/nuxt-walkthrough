@@ -95,27 +95,31 @@ let error=ref(false);
 let step = ref(1);
 let code = ref(null);
 
+
 const nextStep = async () => {
   let result = {success: false};
   if(step.value === 1){
     result = await sendEmail();
+    
+    if(result.success) step.value++;
+    else error.value = result.message;
+
   }else if(step.value === 2){
     result = await validateCode();
-  }
-  if(result.success) {
-    step.value++;
+    if(result.success) {
+      step.value++;
 
-    //store the token returned
-    setLoggedInUser({email: email, token: result.token});
-    
-    if(step.value === 3){
+      //store the token returned
+      setLoggedInUser({email: email, token: result.token, gravatar: result.gravatar});
+
       setTimeout(()=> {
         toggleLoginDialog();
         return;
       },1000);
+
+    }else{
+      error.value = result.message;
     }
-  } else {
-    error.value = result.message;
   }
 
 

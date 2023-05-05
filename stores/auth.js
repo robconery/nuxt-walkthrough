@@ -12,21 +12,28 @@ export const useAuthStore = defineStore("auth", {
     }
   },
   actions: { 
-    setLoggedInUser({email, token}){
+    setLoggedInUser({email, token, gravatar}){
       this.user.loggedIn = true;
       this.user.email = email;
       this.user.token = token;
-      console.log(this.user);
+      this.user.gravatar = gravatar;
+
+      localStorage.setItem("user",JSON.stringify(this.user));
+    },
+    logout(){
+      this.user.loggedIn = false;
+      localStorage.removeItem("user");
     },
     toggleLoginDialog(){
       this.dialogs.login = !this.dialogs.login;
     },
-    toggleLogin(){
-      this.user.loggedIn = !this.user.loggedIn;
-    },
     async fetchUser(){
-      //const user = await queryUser().find();
-      //this.user = user;
+      const json = localStorage.getItem("user");
+      if(json){
+        const userData = JSON.parse(json);
+        console.log(userData);
+        this.setLoggedInUser(userData);
+      }
     }
   },
 })

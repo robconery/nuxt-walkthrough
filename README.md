@@ -1,21 +1,20 @@
-# Episode 16: Auth Part 3 - Finishing up the UI (I hope)
-Got a little stuck with things last time, which is fine - it happens every time I use Vue 3!
+# Episode 17: Auth, Part 4
+The customer can login, but now what? We need to update the UI and make sure they can watch the videos they've selected.
 
-## Testing? Hello?
-Yes, testing is always a good idea! Unfortunately...
+## Setting Up Gravatar
+We have John the Placeholder in now - let's formalize this:
 
-## Formalizing state for the form
-We're beyond simple boolean checks for the state of our modal as we need to transition between:
+ - Choosing when, and where, to create an avatar using gravatar
+ - Conditional display
+ - Showing the login
 
- - Email prompt
- - Registration if not recognized
- - Code input
+## Access Rules
+When our user is logged in we need a way to know if they can watch a given video:
 
-## Adding a logout feature
-I don't ever logout of web sites but I'm sure there's a use case for this.
+ - Creating an API call for authorization
+ - Free videos are always watchable by anyone, logged in or not
 
-## Round things out
-We have two app bars right now which is OK, but we're at a point where we should think about collapsing things.
+## Oh Yeah... Logging Out
+What happens when a user logs out? I was supposed to do this a few episodes ago...
 
- - Let's see if we can use slots!
- - Add a loader icon to the send link button
+ - Add a logout button
