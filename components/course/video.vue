@@ -1,30 +1,30 @@
 <template>
-  <div  v-if="user.loggedIn" style="width:1280px;height:720px">
-    <div class="embed-container w-100" style="width:1280px;height:720px">
-      <iframe
-        id="vimeo-player"
-        class="w-100 mx-auto"
-        :src="`https://player.vimeo.com/video/${lesson.vimeo_id}`"
-        frameborder="0"
-        allow="autoplay; fullscreen"
-        allowfullscreen
-        style="min-height:720px;min-width: 1280px"
-      ></iframe>
-    </div>
+
+  <div class="embed-container w-full" v-if="lesson.vimeo_id && user.loggedIn">
+    <iframe
+      id="vimeo-player"
+      class="w-100 mx-auto"
+      :src="`https://player.vimeo.com/video/${lesson.vimeo_id}`"
+      frameborder="0"
+      allow="autoplay; fullscreen"
+      allowfullscreen
+      style="min-height:720px;min-width: 1280px"
+    ></iframe>
   </div>
+
   <div class="text-center" v-else>
-    <v-img src="https://via.placeholder.com/1280x720" width="1280" class="mx-auto" />
+    <v-img :src="`/img/slides/${slug}/${id}.jpg`" width="1280" class="mx-auto" />
   </div>
-
-
 
 </template>
 <script setup>
-import { useAuthStore } from '~~/stores/auth';
-import { useCourseStore } from '~~/stores/course';
+import { useAuthStore } from '@/stores/auth';
+import { useCourseStore } from '@/stores/course';
 const {user} = useAuthStore();
 const {lesson} = useCourseStore();
-
+const route = useRoute();
+const slug = route.params.slug;
+const id = route.params.id;
 defineProps(["id"]);
 </script>
 <style>

@@ -15,7 +15,7 @@
         <v-icon>mdi-table-of-contents</v-icon>
       </v-btn>
       <a href="/">
-        <img src="/img/logo.png" alt="" style="height:32px" class="ml-3 mt-2"/>
+        <img src="/img/logo.png" alt="" style="height:44px" class="ml-3 mt-2"/>
       </a>
       <v-spacer></v-spacer>
       
@@ -48,15 +48,15 @@
     <CourseNav  />
     
     <v-main class="">
-      <v-container  v-if="lesson">
-        <v-row>
-          <v-col cols="12" class="mx-auto">
+      <v-container v-if="lesson" class="w-100">
+        <v-row justify-center>
+          <v-col cols="12" class="mx-auto w-full">
             <CourseVideo id="1084537" />
           </v-col>
         </v-row>
         <v-row>
           <v-col cols="12" md="8" class="mx-auto">
-          <h2>{{ lesson.title }}</h2>
+          <h1 style="border-bottom:1px solid" class="my-8">{{ lesson.title }}</h1>
           <ContentRenderer :value="lesson" />
           
           </v-col>
@@ -85,7 +85,18 @@ await setCourse(slug);
 await setLessons(slug);
 await setLesson(slug, id);
 await setNextPrev();
-
-
-
+useSeo({
+  title: lesson.title,
+  description: lesson.description,
+});
 </script>
+
+<style>
+h2{
+  margin-top: 18px;
+}
+a{
+  color:#ccc;
+  text-decoration: none;
+}
+</style>

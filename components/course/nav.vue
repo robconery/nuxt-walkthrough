@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer v-model="course.showSideNav" :color="bg"  >
+  <v-navigation-drawer v-model="course.showSideNav" :color="bg"  width="350">
     <v-list v-for="cat in categories"
       active-class="border"
     >
@@ -8,6 +8,7 @@
         v-for="lesson in categoryLessons(cat)"
         :to="link(lesson)"
         color="white"
+        density="compact"
         >
         <template #append v-if="lesson.free">
           <v-icon icon="mdi-lock-open-variant" color="green"></v-icon>

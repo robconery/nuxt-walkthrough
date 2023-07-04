@@ -15,10 +15,8 @@ export default defineEventHandler(async (event) => {
     //is it expired?
     if(user.codeExpires > new Date().getTime()){
       const token = jwt.sign({id: user.id, email: user.email}, process.env.AUTH_SECRET);
-
       const hash = md5(email.toLowerCase().trim());
       const gravatar = `https://secure.gravatar.com/avatar/${hash}?size=150`;
-
       return {success: true, token, gravatar}
     }else{
       return {success: false, message: "The code has expired"}

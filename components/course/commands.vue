@@ -5,7 +5,7 @@
     color="transparent"
     location="bottom"
     style="opacity:0.7;"
-    class="pb-8 pt-8"
+    class="pb-8 pt-8 pr-4"
     >
 
   <v-btn
@@ -31,10 +31,10 @@
 </template>
 <script setup>
 import {useCourseStore} from "@/stores/course";
-const {lesson,next, prev} = useCourseStore();
+const {course,lesson,next, prev} = useCourseStore();
 
 const navLesson = function(toLesson){
-  return `/courses/${lesson.slug}/${toLesson.slug}`
+  return `/courses/${course.slug}/${toLesson.slug}`
 };
 
 </script>

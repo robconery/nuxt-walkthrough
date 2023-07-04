@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
+    "test": "NODE_ENV=test mocha --recursive --require ./test/helpers",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -12,6 +13,7 @@
     "@mdi/font": "^7.2.96",
     "@nuxt/content": "^2.5.2",
     "@types/node": "^18.15.11",
+    "mocha": "^10.2.0",
     "nuxt": "^3.3.2"
   },
   "dependencies": {
@@ -20,9 +22,12 @@
     "dotenv": "^16.0.3",
     "jsonwebtoken": "^9.0.0",
     "nodemailer": "^6.9.1",
+    "pg": "^8.11.1",
     "pinia": "^2.0.33",
     "sass": "^1.60.0",
+    "sequelize": "^6.32.1",
     "shiki": "^0.14.1",
+    "sqlite3": "^5.1.6",
     "vuetify": "^3.1.12"
   }
 }
