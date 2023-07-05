@@ -40,12 +40,25 @@ exports.DB = {
 //initialize
 
 const {User} = require("./user").init(sequelize);
-const {Product} = require("./product").init(sequelize);
+const {Course, Lesson} = require("./course").init(sequelize);
+
+//custom finder
+User.getEverything = function(id){
+  return User.findByPk(id,{
+    include: {
+      model: Course,
+      include: Lesson
+    }
+  })
+}
 
 //relations
-User.belongsToMany(Product, {through: "Authorizations"})
-Product.belongsToMany(User, {through: "Authorizations"})
+User.belongsToMany(Course, {through: "Authorizations"})
+Course.belongsToMany(User, {through: "Authorizations"})
+Course.hasMany(Lesson);
+Lesson.belongsTo(Course);
 
 //exports bits
 exports.User = User;
-exports.Product = Product;
+exports.Course = Course;
+exports.Lesson = Lesson;

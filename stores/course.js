@@ -31,6 +31,7 @@ export const useCourseStore = defineStore("course", {
       for(let d of content){
         this.lessons.push(d);
       }
+
     },
     async setLesson(slug, id){
       const doc = await queryContent(`/lessons/${slug}`).where({slug: id}).findOne();

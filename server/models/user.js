@@ -2,10 +2,7 @@ const crypto = require("crypto");
 const { Model, DataTypes, Op } = require('sequelize');
 
 class User extends Model{
-  async isAuthorized(sku){
-    const found = await this.getProducts({sku: sku});
-    return found.length > 0;
-  }
+
   static findByEmail(email){
     return User.findOne({
       where: {email}

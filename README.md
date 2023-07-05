@@ -1,22 +1,21 @@
-# Episode 18: Authorization
-We can't escape it: we need a database! We have lots of choices but I'm going to go with what I would really do, so here we go!
+# Episode 19: Authorization, Part 2
+In this episode we're going to wire up the login process, end to end. We'll adjust a few things along the way, as needed.
 
-## Considerations
-How do we want to store our data and, more importantly, how should we get started?
+## Finishing the Validator
+I stubbed out a few things in the `validate-code` handler, so it's likely I'll need to rethink what I'm doing...
 
- - Keep ignoring it and use something like `json-server`
- - Use a hosted system that's easy, like Supabase or Firebase
- - Roll up our sleeves and start building our models
+ - Have a look at the existing code
+ - Add our `User` model and wire it up
 
-I don't like the idea of writing code I know I'll throw away, so maybe we go with the 3rd option. Which leaves the question...
+## Creating Seeds
+We're working in development mode now, which means we'll need to seed our database with our dev data. 
 
-## Why Not Firebase or Supabase?
-Short answer: these are great choices which I'll get into later, but only if you understand:
+ - Create a `seed` task we can use as needed
+ - Add test data for `User` and `Product`
 
- - They replace your entire backend and API
- - Security rules! So easy to mess up.
- - They also replace your application state, in some ways (if you go full realtime)
+## The Authorized Payload
+Finally, we're at the point where we can ping our API to see if our user is authorized for a given video. We can noodle on this for hours, or we could do the simplest thing... but what's that?
 
-## My User Code
-I have some code ready to go that I added to the project and we'll walk through
+ - All course/lesson info goes in the DB
+ - Only lesson/video info goes in the DB and we deal with dual data stores
 

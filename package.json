@@ -4,6 +4,7 @@
   "scripts": {
     "build": "nuxt build",
     "test": "NODE_ENV=test mocha --recursive --require ./test/helpers",
+    "seed": "NODE_ENV=development node server/data/seed.js",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
