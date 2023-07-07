@@ -1,4 +1,4 @@
-import {User, Course} from "../models";
+import {User} from "../models";
 import jwt from "jsonwebtoken";
 
 export default defineEventHandler(async (event) => {  
@@ -8,7 +8,12 @@ export default defineEventHandler(async (event) => {
     const {id} = await jwt.verify(token, process.env.AUTH_SECRET);
     if(id){
       const user = await User.getEverything(id);
-      return {success: true, user};
+      let returnData = {
+        id: user.id,
+        gravatar: user.gravatar,
+        courses: user.Courses
+      }
+      return {success: true, user: returnData};
     }else{
       return {success: false, message: "Invalid ID"}
     }

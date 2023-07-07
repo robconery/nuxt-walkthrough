@@ -4,22 +4,27 @@
       active-class="border"
     >
       <v-list-subheader color="white">{{ cat }}</v-list-subheader>
+
       <v-list-item 
         v-for="lesson in categoryLessons(cat)"
         :to="link(lesson)"
         color="white"
         density="compact"
         >
-        <template #append v-if="lesson.free">
-          <v-icon icon="mdi-lock-open-variant" color="green"></v-icon>
+        <template #prepend >
+          <v-icon :icon="lesson.icon"></v-icon>
         </template>
-        <v-list-item-title class="text-grey">{{ lesson.title }}</v-list-item-title>      
+
+        <v-list-item-title class="text-grey">{{ lesson.title }}
+        </v-list-item-title>      
       </v-list-item>
+
     </v-list>
   </v-navigation-drawer>
 </template>
 <script setup>
 import {useCourseStore} from "@/stores/course";
+import {useAuthStore} from "@/stores/auth";
 import { useDisplay } from 'vuetify'
 
 const bg = computed(() => {
@@ -35,16 +40,32 @@ const bg = computed(() => {
   return "transparent"
 })
 
+
 const { lessons, course } = useCourseStore();
+const {user} = useAuthStore();
+
+const setLoggedInState = function(){
+  //does the user own this?
+  const owned = user.courses.find(c => c.slug === course.slug);
+
+  if(owned){
+    //reset the icons
+    for(let l of lessons){
+      l.icon = "mdi-circle-outline"
+    }
+  }
+}
 
 const link = function(lesson) {
   return `/courses/${course.slug}/${lesson.slug}`
 }
 
+
 const categories = computed(() => {
   const cats = lessons.map(l => l.category);
   return new Set(cats);
 });
+
 
 const categoryLessons = function(cat){
   return lessons.filter(l => l.category === cat);

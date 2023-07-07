@@ -110,9 +110,10 @@ const nextStep = async () => {
     if(result.success) {
       loginForm.step++;
 
-      setTimeout(function(){
+      setLoggedInUser({user:result.user, token: result.token});     
+      
+      setTimeout(async function(){
         toggleLoginDialog();
-        setLoggedInUser({email: loginForm.email, token: result.token, gravatar: result.gravatar});
       }, 2000);
       
     }else{

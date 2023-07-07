@@ -1,6 +1,6 @@
 ---
 title: "The Nuxt Walkthrough"
-slug: "nuxt"
+slug: "accelerator"
 slide: "/img/slides/nuxt.jpg"
 github: "https://robconery.com/nuxt-walkthrough"
 discussion: "https://github.com/robconery/nuxt-walkthrough/discussions"

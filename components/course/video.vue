@@ -1,6 +1,6 @@
 <template>
 
-  <div class="embed-container w-full" v-if="lesson.vimeo_id && user.loggedIn">
+  <div class="embed-container w-full" v-if="lesson.vimeo_id && loggedIn">
     <iframe
       id="vimeo-player"
       class="w-100 mx-auto"
@@ -20,7 +20,7 @@
 <script setup>
 import { useAuthStore } from '@/stores/auth';
 import { useCourseStore } from '@/stores/course';
-const {user} = useAuthStore();
+const {loggedIn} = useAuthStore();
 const {lesson} = useCourseStore();
 const route = useRoute();
 const slug = route.params.slug;

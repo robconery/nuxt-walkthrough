@@ -1,21 +1,12 @@
-# Episode 19: Authorization, Part 2
-In this episode we're going to wire up the login process, end to end. We'll adjust a few things along the way, as needed.
+# Episode 21: Authorization, Part 4
+Our API is cookin and we have the data we need to make sure our user, if authorized, can watch their videos!
 
-## Finishing the Validator
-I stubbed out a few things in the `validate-code` handler, so it's likely I'll need to rethink what I'm doing...
+## Accessing the auth data from the course nav
+Our course navigation needs to change behavior if:
 
- - Have a look at the existing code
- - Add our `User` model and wire it up
+ - The user is logged in
+ - If the video is free
+ - The user has watched the video (we'll get to that in a later episode)
 
-## Creating Seeds
-We're working in development mode now, which means we'll need to seed our database with our dev data. 
-
- - Create a `seed` task we can use as needed
- - Add test data for `User` and `Product`
-
-## The Authorized Payload
-Finally, we're at the point where we can ping our API to see if our user is authorized for a given video. We can noodle on this for hours, or we could do the simplest thing... but what's that?
-
- - All course/lesson info goes in the DB
- - Only lesson/video info goes in the DB and we deal with dual data stores
-
+## ... and the Video Player
+If they have access (free or authorized) it should display
