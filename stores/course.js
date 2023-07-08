@@ -27,11 +27,10 @@ export const useCourseStore = defineStore("course", {
     async setLessons(slug){
       this.lessons.length = 0;
       const content = await queryContent(`/lessons/${slug}`).find();
-
       for(let d of content){
+        d.icon = d.free ? "mdi-lock-open-variant" : "mdi-lock"
         this.lessons.push(d);
       }
-
     },
     async setLesson(slug, id){
       const doc = await queryContent(`/lessons/${slug}`).where({slug: id}).findOne();

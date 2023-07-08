@@ -15,6 +15,7 @@ export default defineEventHandler(async (event) => {
     //is it expired?
     if(claim.codeExpires > new Date().getTime()){
       //get the user by email...
+<<<<<<< HEAD
       const [user,thing] = await User.findOrCreate({where:{email: email}});
       const token = jwt.sign({id: user.id}, process.env.AUTH_SECRET);
       const everything = await User.getEverything(user.id);
@@ -24,6 +25,21 @@ export default defineEventHandler(async (event) => {
         courses: everything.Courses || [],
         token
       }}
+=======
+      let [user,created] = await User.findOrCreate({where:{email: email}});
+      //console.log(user);
+      user = await User.getEverything(user.id);
+
+      //console.log(user);
+      const token = jwt.sign({id: user.id}, process.env.AUTH_SECRET);
+      let returnData = {
+        id: user.id,
+        gravatar: user.gravatar,
+        //courses: user.Courses,
+        token: token
+      }
+      return {success: true, data: returnData}
+>>>>>>> fucked
     }else{
       return {success: false, message: "The code has expired"}
     }
