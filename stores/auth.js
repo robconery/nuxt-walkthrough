@@ -15,14 +15,10 @@ export const useAuthStore = defineStore("auth", {
     }
   },
   actions: { 
-    setLoggedInUser({user, token}){
-
-      if(user.loggedIn) this.user.loggedIn = true;
-      this.user.gravatar = user.gravatar;
-      this.user.courses = user.courses;
-      this.user.id = user.id;
-      //this.user.loggedIn = true;
-      localStorage.setItem("user", JSON.stringify({id: user.id,token}));
+    setLoggedInUser(data){
+      Object.assign(this.user,data);
+      this.user.loggedIn = true;
+      localStorage.setItem("user", JSON.stringify({token: data.token}));
     },
     logout(){
       this.user.loggedIn = false;
@@ -38,15 +34,16 @@ export const useAuthStore = defineStore("auth", {
         const userData = JSON.parse(json);
         const res = await fetch("/api/user", {
           method: "post",
-          body: JSON.stringify({id: userData.id, token: userData.token})
+          body: JSON.stringify({token: userData.token})
         });
-        const {success,user,message} = await res.json();
+        const {success,data,message} = await res.json();
+
         if(success){
-          this.setLoggedInUser({user,token: userData.token});
+          this.setLoggedInUser(data);
         }else{
           console.error(message)
-          localStorage.removeItem("user");
-          location.href="/";
+          // localStorage.removeItem("user");
+          // location.href="/";
         }
         
       }

@@ -24,7 +24,6 @@
 </template>
 <script setup>
 import {useCourseStore} from "@/stores/course";
-import {useAuthStore} from "@/stores/auth";
 import { useDisplay } from 'vuetify'
 
 const bg = computed(() => {
@@ -42,19 +41,6 @@ const bg = computed(() => {
 
 
 const { lessons, course } = useCourseStore();
-const {user} = useAuthStore();
-
-const setLoggedInState = function(){
-  //does the user own this?
-  const owned = user.courses.find(c => c.slug === course.slug);
-
-  if(owned){
-    //reset the icons
-    for(let l of lessons){
-      l.icon = "mdi-circle-outline"
-    }
-  }
-}
 
 const link = function(lesson) {
   return `/courses/${course.slug}/${lesson.slug}`

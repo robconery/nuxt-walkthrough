@@ -18,15 +18,16 @@ export default defineEventHandler(async (event) => {
       let [user,created] = await User.findOrCreate({where:{email: email}});
       //console.log(user);
       user = await User.getEverything(user.id);
+
+      //console.log(user);
+      const token = jwt.sign({id: user.id}, process.env.AUTH_SECRET);
       let returnData = {
         id: user.id,
         gravatar: user.gravatar,
-        courses: user.Courses
+        //courses: user.Courses,
+        token: token
       }
-      //console.log(user);
-      const token = jwt.sign({id: user.id}, process.env.AUTH_SECRET);
-
-      return {success: true, token, user: returnData}
+      return {success: true, data: returnData}
     }else{
       return {success: false, message: "The code has expired"}
     }

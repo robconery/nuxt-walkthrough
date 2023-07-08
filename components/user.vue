@@ -26,13 +26,11 @@
   <v-btn class="mr-4" 
       color="white"
       variant="outlined"
-      v-if="!user.loggedIn" 
       @click="toggleLoginDialog()">
       Login
   </v-btn>
-  <AuthLoginDialog />
 </div>
-
+<AuthLoginDialog />
 </template>
 <script setup>
 import {useAuthStore} from '@/stores/auth';

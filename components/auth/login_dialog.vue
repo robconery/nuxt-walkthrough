@@ -88,7 +88,7 @@
 <script setup>
 
 import {useAuthStore} from "@/stores/auth.js";
-const {dialogs, toggleLoginDialog, setLoggedInUser} = useAuthStore();
+const {currentUser, dialogs, toggleLoginDialog, setLoggedInUser} = useAuthStore();
 
 let loginForm = reactive({
   email: "robconery@gmail.com",
@@ -110,9 +110,9 @@ const nextStep = async () => {
     if(result.success) {
       loginForm.step++;
 
-      setLoggedInUser({user:result.user, token: result.token});     
-      
+       
       setTimeout(async function(){
+        setLoggedInUser(result.data);
         toggleLoginDialog();
       }, 2000);
       
