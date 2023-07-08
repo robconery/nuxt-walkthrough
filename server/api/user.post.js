@@ -7,8 +7,14 @@ export default defineEventHandler(async (event) => {
   try{
     const {id} = await jwt.verify(token, process.env.AUTH_SECRET);
     if(id){
-      const user = await User.getEverything(id);
-      return {success: true, user};
+      let user = await User.getEverything(id);
+      //refresh the token
+      const token = jwt.sign({id: user.id}, process.env.AUTH_SECRET);
+      return {success: true, user: {
+        id: user.id,
+        courses: user.Courses,
+        token
+      }};
     }else{
       return {success: false, message: "Invalid ID"}
     }

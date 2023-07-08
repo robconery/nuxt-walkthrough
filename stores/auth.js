@@ -3,25 +3,23 @@ import {defineStore} from "pinia";
 export const useAuthStore = defineStore("auth", {
   state(){
     return {
-      user: {
-        loggedIn: false,
-      },
+      loggedIn: false,
+      user: {},
       dialogs: { //reactive by default 
         login: false
       }
     }
   },
   actions: { 
-    setLoggedInUser({email, token, gravatar}){
-      this.user.loggedIn = true;
-      this.user.email = email;
-      this.user.token = token;
-      this.user.gravatar = gravatar;
-
-      localStorage.setItem("user",JSON.stringify(this.user));
+    setLoggedInUser(userData){
+      this.user.courses = userData.courses;
+      this.user.id = userData.id;
+      localStorage.setItem("user",JSON.stringify({id: userData.id, token: userData.token}));
+      //this.loggedIn = true;
+      
     },
     logout(){
-      this.user.loggedIn = false;
+      this.loggedIn = false;
       localStorage.removeItem("user");
     },
     toggleLoginDialog(){
@@ -30,9 +28,14 @@ export const useAuthStore = defineStore("auth", {
     async fetchUser(){
       const json = localStorage.getItem("user");
       if(json){
-        const userData = JSON.parse(json);
-        console.log(userData);
-        this.setLoggedInUser(userData);
+        const data = JSON.parse(json);
+        const res = await fetch("/api/user", {
+          method: "post",
+          body: JSON.stringify({token: data.token})
+        });
+        const {success, user, message} = await res.json();
+        if(success) this.setLoggedInUser(user)
+        //else... handle this problem...
       }
     }
   },

@@ -28,11 +28,7 @@ exports.init = function(sequelize){
       allowNull: false,
       unique: true
     },
-    vimeo_id: DataTypes.TEXT,
-    free: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false
-    }
+    vimeo_id: DataTypes.TEXT
     }, {
      sequelize,
      underscored: true,
