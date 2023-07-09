@@ -48,10 +48,10 @@
     <CourseNav  />
     
     <v-main class="">
-      <v-container class="w-100">
+      <v-container v-if="lesson" class="w-100">
         <v-row justify-center>
           <v-col cols="12" class="mx-auto w-full">
-            <CourseVideo />
+            <CourseVideo id="1084537" />
           </v-col>
         </v-row>
         <v-row>
@@ -71,10 +71,9 @@
 </template>
 <script setup>
 import {useCourseStore} from "@/stores/course";
-import {useAuthStore} from "@/stores/auth";
 
 let {course,  toggleState, lesson, setCourse, setLessons, setLesson, setNextPrev } = useCourseStore();
-const {toggleLogin} = useAuthStore();
+
 const progress = 33;
 const route = useRoute();
 let slug = route.params.slug;

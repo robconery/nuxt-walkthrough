@@ -1,17 +1,16 @@
 <template>
+
   <v-navigation-drawer v-model="course.showSideNav" :color="bg"  width="350">
-    <v-list v-for="cat in categories"
-      active-class="border"
-    >
+    <v-list v-for="cat in categories" active-class="border">
       <v-list-subheader color="white">{{ cat }}</v-list-subheader>
 
       <v-list-item 
-        v-for="lesson in categoryLessons(cat)"
-        :to="`/courses/${course.slug}/${lesson.slug}`"
+        v-for="item in categoryLessons(cat)"
+        :to="link(item)"
         color="white"
         density="compact"
         >
-        <template #prepend v-if="lesson.free &! user.loggedIn">
+        <template #prepend v-if="item.free &! user.loggedIn">
           <v-icon icon="mdi-lock-open-variant-outline" color="green"></v-icon>
         </template>
         <template #prepend v-else>
@@ -21,7 +20,7 @@
           <v-icon icon="mdi-play-circle-outline" color="orange-darken-1"></v-icon>
         </template>
 
-        <v-list-item-title class="text-grey">{{ lesson.title }}
+        <v-list-item-title class="text-grey">{{ item.title }}
         </v-list-item-title>      
       </v-list-item>
 
@@ -55,7 +54,9 @@ const categories = computed(() => {
   return new Set(cats);
 });
 
-
+const link = function(l){
+  return `/courses/${course.slug}/${l.slug}`
+}
 const categoryLessons = function(cat){
   return lessons.filter(l => l.category === cat);
 };

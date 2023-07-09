@@ -9,8 +9,8 @@
 import { useAuthStore } from '@/stores/auth';
 const { fetchUser} = useAuthStore();
 
-onMounted(async ()=> {
-  await fetchUser();
+onMounted(()=> {
+  fetchUser();
 });
 
 const config = useAppConfig();

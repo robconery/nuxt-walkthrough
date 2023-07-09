@@ -1,4 +1,5 @@
 <template>
+  <div>
     <h2 class="text-center py-8"> {{ doc.title }}</h2>
     <v-row>
       <v-col cols="12" md="6" class="text-center">
@@ -8,6 +9,7 @@
         <ContentRenderer :value="doc" />
       </v-col>
     </v-row>
+  </div>
 </template>
 <script setup>
 defineProps({

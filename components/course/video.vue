@@ -1,5 +1,5 @@
 <template>
-
+<div>
   <div class="embed-container w-full" v-if="showVideo">
     <iframe
       id="vimeo-player"
@@ -15,7 +15,7 @@
   <div class="text-center" v-else>
     <v-img :src="`/img/slides/${slug}/${id}.jpg`" width="1280" class="mx-auto" />
   </div>
-
+</div>
 </template>
 <script setup>
 import { useAuthStore } from '@/stores/auth';
