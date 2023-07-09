@@ -7,12 +7,18 @@
 
       <v-list-item 
         v-for="lesson in categoryLessons(cat)"
-        :to="link(lesson)"
+        :to="`/courses/${course.slug}/${lesson.slug}`"
         color="white"
         density="compact"
         >
-        <template #prepend >
-          <v-icon :icon="lesson.icon"></v-icon>
+        <template #prepend v-if="lesson.free &! user.loggedIn">
+          <v-icon icon="mdi-lock-open-variant-outline" color="green"></v-icon>
+        </template>
+        <template #prepend v-else>
+          <v-icon icon="mdi-circle-outline"></v-icon>
+        </template>
+        <template #prepend v-if="user.loggedIn">
+          <v-icon icon="mdi-play-circle-outline" color="orange-darken-1"></v-icon>
         </template>
 
         <v-list-item-title class="text-grey">{{ lesson.title }}
@@ -24,6 +30,7 @@
 </template>
 <script setup>
 import {useCourseStore} from "@/stores/course";
+import {useAuthStore} from "@/stores/auth";
 import { useDisplay } from 'vuetify'
 
 const bg = computed(() => {
@@ -39,12 +46,8 @@ const bg = computed(() => {
   return "transparent"
 })
 
-
 const { lessons, course } = useCourseStore();
-
-const link = function(lesson) {
-  return `/courses/${course.slug}/${lesson.slug}`
-}
+const { user, ownsCourse } = useAuthStore();
 
 
 const categories = computed(() => {

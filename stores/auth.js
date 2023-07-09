@@ -15,6 +15,10 @@ export const useAuthStore = defineStore("auth", {
     }
   },
   actions: { 
+    ownsCourse(slug){
+      if(!this.user.loggedIn) return false;
+      return this.user.courses.find(c => c.slug === slug);
+    },
     setLoggedInUser(data){
       Object.assign(this.user,data);
       this.user.loggedIn = true;

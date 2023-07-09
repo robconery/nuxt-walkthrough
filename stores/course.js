@@ -28,7 +28,7 @@ export const useCourseStore = defineStore("course", {
       this.lessons.length = 0;
       const content = await queryContent(`/lessons/${slug}`).find();
       for(let d of content){
-        d.icon = d.free ? "mdi-lock-open-variant" : "mdi-lock"
+        if(d.free) d.icon="mdi-lock-open-variant"
         this.lessons.push(d);
       }
     },

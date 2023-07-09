@@ -1,8 +1,8 @@
-# Episode 21: Authorization, Part 4
+# Episode 21: Authorization, Part 4..?
 Our API is cookin and we have the data we need to make sure our user, if authorized, can watch their videos!
 
 ## Accessing the auth data from the course nav
-Our course navigation needs to change behavior if:
+Our course navigation needs to change if:
 
  - The user is logged in
  - If the video is free

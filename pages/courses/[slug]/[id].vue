@@ -48,10 +48,10 @@
     <CourseNav  />
     
     <v-main class="">
-      <v-container v-if="lesson" class="w-100">
+      <v-container class="w-100">
         <v-row justify-center>
           <v-col cols="12" class="mx-auto w-full">
-            <CourseVideo id="1084537" />
+            <CourseVideo />
           </v-col>
         </v-row>
         <v-row>

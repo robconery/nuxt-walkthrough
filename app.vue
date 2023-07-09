@@ -13,8 +13,6 @@ onMounted(async ()=> {
   await fetchUser();
 });
 
-// user.loggedIn = true;
-// user.gravatar = "https://secure.gravatar.com/avatar/31b18bc48108bc410884022764dbeec6?size=150"
 const config = useAppConfig();
 
 useHead({

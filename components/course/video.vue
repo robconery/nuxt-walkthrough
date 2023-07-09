@@ -1,10 +1,10 @@
 <template>
 
-  <div class="embed-container w-full" v-if="lesson.vimeo_id && loggedIn">
+  <div class="embed-container w-full" v-if="showVideo">
     <iframe
       id="vimeo-player"
       class="w-100 mx-auto"
-      :src="`https://player.vimeo.com/video/${lesson.vimeo_id}`"
+      :src="`https://player.vimeo.com/video/${vimeo_id}`"
       frameborder="0"
       allow="autoplay; fullscreen"
       allowfullscreen
@@ -19,13 +19,24 @@
 </template>
 <script setup>
 import { useAuthStore } from '@/stores/auth';
-import { useCourseStore } from '@/stores/course';
-const {loggedIn} = useAuthStore();
-const {lesson} = useCourseStore();
+const {user, ownsCourse} = useAuthStore();
 const route = useRoute();
+
 const slug = route.params.slug;
 const id = route.params.id;
-defineProps(["id"]);
+
+const vimeo_id = computed(() => {
+  if(user.loggedIn){
+    const thisCourse = ownsCourse(slug);
+    const thisLesson = thisCourse.Lessons.find(l => l.slug === id);
+    console.log(thisLesson.vimeo_id);
+    return thisLesson.vimeo_id;
+  }
+  return 0;
+});
+const showVideo = computed(() => {
+  return ownsCourse(slug);
+});
 </script>
 <style>
 
