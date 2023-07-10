@@ -1,12 +1,16 @@
-# Episode 21: Authorization, Part 4..?
-Our API is cookin and we have the data we need to make sure our user, if authorized, can watch their videos!
+# Episode 23: Tracking User Progress
+Users want to know what videos they've watched so they can track their progress, so let's enable that.
 
-## Accessing the auth data from the course nav
-Our course navigation needs to change if:
+## Tracking Completions
+We'll need to add another model, which we'll call `Progress` and will be a many-to-many relationship between `User` and `Lesson`.
 
- - The user is logged in
- - If the video is free
- - The user has watched the video (we'll get to that in a later episode)
+ - Discussion: this is weird database design as we have `User` and `Course` linked with `Authorization`.
+ - Hook up the API endpoint
 
-## ... and the Video Player
-If they have access (free or authorized) it should display
+## The Course Progress Bar
+This will track how far along users are in terms of total minutes.
+
+ - Calculating total duration in minutes
+ - Setting the bar
+ - Updating the bar upon completion
+

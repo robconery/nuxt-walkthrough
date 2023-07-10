@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div v-if="user.id">
+  <div v-if="user.loggedIn">
     <v-menu location="bottom" >
       <template #activator="{ props }">
         <v-btn class="mr-4"  v-bind="props">
@@ -26,15 +26,15 @@
     <v-btn class="mr-4" 
         color="white"
         variant="outlined"
-        @click="toggleLoginDialog()">
+        to="/login">
         Login
     </v-btn>
   </div>
-  <AuthLoginDialog />
+<AuthLoginDialog />
 </div>
 </template>
 <script setup>
 import {useAuthStore} from '@/stores/auth';
-const {user, loggedIn, toggleLoginDialog, logout} = useAuthStore();
+const {user, logout} = useAuthStore();
 
 </script>

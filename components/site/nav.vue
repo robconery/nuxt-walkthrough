@@ -11,8 +11,5 @@
 </template>
 
 <script setup>
-import {useAuthStore} from "@/stores/auth";
-const {toggleLoginDialog} = useAuthStore();
-
 const config = useAppConfig();
 </script>

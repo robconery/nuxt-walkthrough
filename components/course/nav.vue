@@ -28,6 +28,7 @@
   </v-navigation-drawer>
 </template>
 <script setup>
+const router = useRouter()
 import {useCourseStore} from "@/stores/course";
 import {useAuthStore} from "@/stores/auth";
 import { useDisplay } from 'vuetify'
@@ -47,7 +48,6 @@ const bg = computed(() => {
 
 const { lessons, course } = useCourseStore();
 const { user, ownsCourse } = useAuthStore();
-
 
 const categories = computed(() => {
   const cats = lessons.map(l => l.category);
