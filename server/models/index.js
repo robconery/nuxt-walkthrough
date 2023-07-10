@@ -45,10 +45,10 @@ const {Course, Lesson} = require("./course").init(sequelize);
 //custom finder
 User.getEverything = function(id){
   return User.findByPk(id,{
-    include: {
+    include: [{
       model: Course,
       include: Lesson
-    }
+    }, Lesson]
   })
 }
 
@@ -57,6 +57,9 @@ User.belongsToMany(Course, {through: "Authorizations"})
 Course.belongsToMany(User, {through: "Authorizations"})
 Course.hasMany(Lesson);
 Lesson.belongsTo(Course);
+
+User.belongsToMany(Lesson, {through: "Progress"})
+Lesson.belongsToMany(User, {through: "Progress"})
 
 //exports bits
 exports.User = User;

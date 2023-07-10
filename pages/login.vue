@@ -65,8 +65,7 @@
               v-if="loginForm.step < 3"
               color="primary"
               variant="flat"
-              @click="nextStep()"
-            >
+              @click="nextStep()">
               Next
             </v-btn>
           </v-card-actions> 

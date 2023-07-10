@@ -7,6 +7,7 @@ export const useAuthStore = defineStore("auth", {
         id: null,
         loggedIn: false,
         courses: [],
+        completed: [],
         gravatar: ""
       },
       dialogs: { //reactive by default 
@@ -15,6 +16,17 @@ export const useAuthStore = defineStore("auth", {
     }
   },
   actions: { 
+    async markCompleted(course,lesson){
+      const res = await fetch("/api/course/completed", {
+        method: "post",
+        body: JSON.stringify({token: this.user.token, course, lesson})
+      });
+      const data = await res.json();
+      if(data.success){
+        this.user.completed.push({slug: lesson.slug});
+      }
+      return data.success;
+    },
     ownsCourse(slug){
       if(!this.user.loggedIn) return false;
       return this.user.courses.find(c => c.slug === slug);
@@ -49,7 +61,6 @@ export const useAuthStore = defineStore("auth", {
           localStorage.removeItem("user");
           location.href="/";
         }
-        
       }
     }
   },

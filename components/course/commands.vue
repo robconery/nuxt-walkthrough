@@ -1,19 +1,15 @@
 <template>
 
-  <v-app-bar
-      flat
-      color="transparent"
-      location="bottom"
-      style="opacity:0.7;"
-      class="pb-8 pt-8 pr-4"
-      >
-
+<v-row class="py-4">
+  <v-col md="8" >
     <v-btn
         color="light-blue"
         variant="outlined"
         class="ml-4"
+        @click="setCompleted()"
       >Completed</v-btn>
-    <v-spacer></v-spacer>
+  </v-col>
+  <v-col class="text-right">
     <v-btn
       color="light-blue"
       variant="outlined"
@@ -25,13 +21,23 @@
       class="ml-4"
       :to="navLesson(next)"
     >Next</v-btn>
+  </v-col>
+</v-row>
 
-  </v-app-bar>
+
+
 
 </template>
 <script setup>
 import {useCourseStore} from "@/stores/course";
+import {useAuthStore} from "@/stores/auth";
+
 const {course,lesson,next, prev} = useCourseStore();
+const {markCompleted} = useAuthStore();
+
+const setCompleted = function(){
+  markCompleted(course,lesson)
+}
 
 const navLesson = function(toLesson){
   return `/courses/${course.slug}/${toLesson.slug}`

@@ -30,7 +30,6 @@
         Login
     </v-btn>
   </div>
-<AuthLoginDialog />
 </div>
 </template>
 <script setup>

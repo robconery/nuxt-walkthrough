@@ -4,7 +4,6 @@ import jwt from "jsonwebtoken";
 export default defineEventHandler(async (event) => {  
   const {token} = await readBody(event);
   //verify it and get the user's id
-  console.log(token);
   try{
     const {id} = await jwt.verify(token, process.env.AUTH_SECRET);
     if(id){
@@ -16,6 +15,7 @@ export default defineEventHandler(async (event) => {
         id: user.id,
         gravatar: user.gravatar,
         courses: user.Courses,
+        completed: user.Lessons, //TODO: refactor this!
         token: token
       }
       return {success: true, data: returnData};

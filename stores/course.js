@@ -1,13 +1,14 @@
 import { defineStore } from "pinia";
 
 export const useCourseStore = defineStore("course", {
-
   state(){
+  
     return {
       course: {
         discussion: "",
         github: "",
         showSideNav: true,
+        totalDuration: 0
       },
       lessons: [],
       lesson: {},
@@ -15,7 +16,11 @@ export const useCourseStore = defineStore("course", {
       prev: {}
     }
   },
-
+  getters: {
+    courseDuration(state){
+      return state.lessons.reduce((acc,l) => acc += parseInt(l.duration || 0), 0)
+    }
+  },
   actions: {
     toggleState(){
       this.course.showSideNav = !this.course.showSideNav;

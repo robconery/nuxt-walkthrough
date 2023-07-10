@@ -38,24 +38,20 @@
       <User />
     </v-app-bar>
     
-    <v-app-bar color="black" height="8">
-      <v-progress-linear
-      color="blue"
-      v-model="progress"
-    ></v-progress-linear>
-    </v-app-bar>
+    <CourseProgress />
     
     <CourseNav  />
     
     <v-main class="">
-      <v-container v-if="lesson" class="w-100">
+      <v-container v-if="lesson">
         <v-row justify-center>
-          <v-col cols="12" class="mx-auto w-full">
-            <CourseVideo id="1084537" />
+          <v-col cols="12">
+            <CourseVideo />
+            <CourseCommands />
           </v-col>
         </v-row>
         <v-row>
-          <v-col cols="12" md="8" class="mx-auto">
+          <v-col cols="12" md="8" >
           <h1 style="border-bottom:1px solid" class="my-8">{{ lesson.title }}</h1>
           <ContentRenderer :value="lesson" />
           
@@ -65,7 +61,7 @@
         
       </v-container>
     </v-main>
-    <CourseCommands />
+    
 
   </v-layout>
 </template>
@@ -74,7 +70,7 @@ import {useCourseStore} from "@/stores/course";
 
 let {course,  toggleState, lesson, setCourse, setLessons, setLesson, setNextPrev } = useCourseStore();
 
-const progress = 33;
+
 const route = useRoute();
 let slug = route.params.slug;
 let id = route.params.id;

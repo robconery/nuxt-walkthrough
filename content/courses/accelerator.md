@@ -1,4 +1,5 @@
 ---
+id: 1
 title: "The Nuxt Walkthrough"
 slug: "accelerator"
 slide: "/img/slides/nuxt.jpg"

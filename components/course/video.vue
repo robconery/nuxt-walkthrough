@@ -29,7 +29,6 @@ const vimeo_id = computed(() => {
   if(user.loggedIn){
     const thisCourse = ownsCourse(slug);
     const thisLesson = thisCourse.Lessons.find(l => l.slug === id);
-    console.log(thisLesson.vimeo_id);
     return thisLesson.vimeo_id;
   }
   return 0;
