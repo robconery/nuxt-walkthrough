@@ -8,7 +8,6 @@ export const useCourseStore = defineStore("course", {
         discussion: "",
         github: "",
         showSideNav: true,
-        totalDuration: 0
       },
       lessons: [],
       lesson: {},
