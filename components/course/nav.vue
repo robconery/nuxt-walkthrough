@@ -10,15 +10,22 @@
         color="white"
         density="compact"
         >
-        <template #prepend v-if="item.free &! user.loggedIn">
+        <template #prepend>
+          <v-icon icon="mdi-lock-outline" color="gray-darken-1"></v-icon>
+        </template>
+        <template #prepend v-if="item.free && !ownsCourse(course.slug)">
           <v-icon icon="mdi-lock-open-variant-outline" color="green"></v-icon>
         </template>
-        <template #prepend v-else>
-          <v-icon icon="mdi-circle-outline"></v-icon>
+        <template #prepend v-if="item.completed">
+          <v-icon icon="mdi-check-outline" color="green"></v-icon>
         </template>
-        <template #prepend v-if="user.loggedIn">
+        <template #prepend v-if="user.loggedIn && ownsCourse(course.slug)">
           <v-icon icon="mdi-play-circle-outline" color="orange-darken-1"></v-icon>
         </template>
+        <template #prepend v-if="user.loggedIn && !ownsCourse(course.slug)">
+          <v-icon icon="mdi-circle-outline" color="gray-darken-1"></v-icon>
+        </template>
+
 
         <v-list-item-title class="text-grey">{{ item.title }}
         </v-list-item-title>      

@@ -102,7 +102,7 @@ const nextStep = async () => {
     if(result.success) {
       loginForm.step++;       
       setTimeout(async function(){
-        //setLoggedInUser(result.data);
+        setLoggedInUser(result.data);
         location.href="/";
       }, 2000);
       

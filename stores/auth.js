@@ -46,20 +46,22 @@ export const useAuthStore = defineStore("auth", {
     },
     async fetchUser(){
       const json = localStorage.getItem("user");
-      if(json){
-        const userData = JSON.parse(json);
-        const res = await fetch("/api/user", {
-          method: "post",
-          body: JSON.stringify({token: userData.token})
-        });
-        const {success,data,message} = await res.json();
+      if(!this.user.loggedIn && json){
+        if(json){
+          const userData = JSON.parse(json);
+          const res = await fetch("/api/user", {
+            method: "post",
+            body: JSON.stringify({token: userData.token})
+          });
+          const {success,data,message} = await res.json();
 
-        if(success){
-          this.setLoggedInUser(data);
-        }else{
-          console.error(message)
-          localStorage.removeItem("user");
-          location.href="/";
+          if(success){
+            this.setLoggedInUser(data);
+          }else{
+            console.error(message)
+            localStorage.removeItem("user");
+            location.href="/";
+          }
         }
       }
     }

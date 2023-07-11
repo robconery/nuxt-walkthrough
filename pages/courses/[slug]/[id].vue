@@ -51,7 +51,7 @@
           </v-col>
         </v-row>
         <v-row>
-          <v-col cols="12" md="8" >
+          <v-col cols="12" md="8" class="mx-auto">
           <h1 style="border-bottom:1px solid" class="my-8">{{ lesson.title }}</h1>
           <ContentRenderer :value="lesson" />
           
@@ -75,11 +75,15 @@ const route = useRoute();
 let slug = route.params.slug;
 let id = route.params.id;
 
+if(course.slug !== slug){
+  await setCourse(slug);
+  await setLessons(slug);
+}
 
-await setCourse(slug);
-await setLessons(slug);
+
 await setLesson(slug, id);
 await setNextPrev();
+
 useSeo({
   title: lesson.title,
   description: lesson.description,

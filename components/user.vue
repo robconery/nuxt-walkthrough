@@ -8,7 +8,7 @@
             <v-img
               :src="user.gravatar"
               alt="User Menu"
-            ></v-img>
+            />
           </v-avatar>
         </v-btn>
       </template>

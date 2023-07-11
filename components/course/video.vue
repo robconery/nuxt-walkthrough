@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div class="embed-container w-full" v-if="showVideo">
+  <div class="embed-container w-full" v-if="showVideo && vimeo_id">
     <iframe
       id="vimeo-player"
       class="w-100 mx-auto"
@@ -25,6 +25,7 @@ const route = useRoute();
 const slug = route.params.slug;
 const id = route.params.id;
 
+
 const vimeo_id = computed(() => {
   if(user.loggedIn){
     const thisCourse = ownsCourse(slug);
@@ -34,7 +35,7 @@ const vimeo_id = computed(() => {
   return 0;
 });
 const showVideo = computed(() => {
-  return ownsCourse(slug);
+  return vimeo_id && ownsCourse(slug);
 });
 </script>
 <style>
