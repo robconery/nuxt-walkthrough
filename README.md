@@ -1,17 +1,18 @@
-# Episode 25: Supabase Authentication
-We can't query our store unless we know who the user is, so let's add that quickly.
+# Episode 26: Going Full Supabase
+Let's tear through this episode, shall we! We already have the UI in place, we just need to flip over the data.
 
-## Adding Auth
-Follow [the Supabase docs](https://supabase.com/docs/guides/getting-started/tutorials/with-nuxt-3) and add authentication to our app.
+## Rolling in Videos
+We're using local content for the lesson data, now let's roll in videos with Vimeo IDs.
 
- - Work in a branch, of course!
- - Just using email link for now
- - Replace our current auth and blow up some code!
+ - Adding setters/getters for videos
+ - Updating the course nav, progress and video components
 
-## Creating an API Abstraction
-We don't want Supabase code littered throughout the app so let's be sure to centralize it somewhere, in case we have to swerve later.
+## Checking For Completed
+If we have time...
 
- - Create an API store (?)
+ - Adding setters/getters for completed
+ - Updating the course nav, progress and videos with completed info
+
 
 
 

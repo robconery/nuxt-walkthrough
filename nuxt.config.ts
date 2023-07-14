@@ -3,7 +3,8 @@ import shiki from 'shiki'
 export default defineNuxtConfig({
   modules: [    
     '@nuxt/content',
-    '@pinia/nuxt'
+    '@pinia/nuxt',
+    '@nuxtjs/supabase'
   ],
   telemetry: false,
   css: [

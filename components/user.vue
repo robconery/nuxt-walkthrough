@@ -1,12 +1,12 @@
 <template>
 <div>
-  <div v-if="user.loggedIn">
+  <div v-if="user">
     <v-menu location="bottom" >
       <template #activator="{ props }">
         <v-btn class="mr-4"  v-bind="props">
           <v-avatar>
             <v-img
-              :src="user.gravatar"
+              :src="gravatar"
               alt="User Menu"
             />
           </v-avatar>
@@ -33,7 +33,20 @@
 </div>
 </template>
 <script setup>
-import {useAuthStore} from '@/stores/auth';
-const {user, logout} = useAuthStore();
+const supabase = useSupabaseClient();
+const user = useSupabaseUser();
+import md5 from "blueimp-md5";
+
+const gravatar = computed(() => {
+  if(user.value){
+    const hash = md5(user.value.email.toLowerCase().trim());
+    return `https://secure.gravatar.com/avatar/${hash}?size=150`;
+  }
+});
+
+const logout = async function(){
+  await supabase.auth.signOut();
+  location.href="/";
+}
 
 </script>
