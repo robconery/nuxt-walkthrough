@@ -1,21 +1,18 @@
-# Episode 24: It's Time To Refactor/Redo
+# Episode 25: Supabase Authentication
+We can't query our store unless we know who the user is, so let's add that quickly.
 
-## Off Camera
- - Changed the Completed/Prev/Next buttons
+## Adding Auth
+Follow [the Supabase docs](https://supabase.com/docs/guides/getting-started/tutorials/with-nuxt-3) and add authentication to our app.
 
-## Let's Stop and Think
-It's the Great Tempation of every programmer: _I could rebuild this thing over the weekend_. That's not what's happening here.
+ - Work in a branch, of course!
+ - Just using email link for now
+ - Replace our current auth and blow up some code!
 
-Every application gets to a "tipping point" and rarely, in my experience, do we ever do things righ the first time. If you do... you're rad.
+## Creating an API Abstraction
+We don't want Supabase code littered throughout the app so let's be sure to centralize it somewhere, in case we have to swerve later.
 
-This is where we are. 
+ - Create an API store (?)
 
-## Alternatives to Consider
-I've mentioned these things before, but it's time to seriously consider...
-
- - A hosted backend, like Pocketbase, Supabase or Firebase
- - A more complete backend API
- - A hosted auth solution
 
 
 

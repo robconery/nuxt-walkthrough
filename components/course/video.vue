@@ -1,15 +1,12 @@
 <template>
 <div>
-  <div class="embed-container w-full" v-if="showVideo && vimeo_id">
-    <iframe
-      id="vimeo-player"
-      class="w-100 mx-auto"
-      :src="`https://player.vimeo.com/video/${vimeo_id}`"
-      frameborder="0"
-      allow="autoplay; fullscreen"
-      allowfullscreen
-      style="min-height:720px;min-width: 1280px"
-    ></iframe>
+  <div v-if="showVideo && vimeo_id">
+    <div style="padding:56.25% 0 0 0;position:relative;">
+      <iframe :src="`https://player.vimeo.com/video/${vimeo_id}`" 
+      frameborder="0" allow="autoplay; fullscreen; picture-in-picture" 
+      allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" >
+      </iframe>
+    </div>
   </div>
 
   <div class="text-center" v-else>
@@ -38,22 +35,3 @@ const showVideo = computed(() => {
   return vimeo_id && ownsCourse(slug);
 });
 </script>
-<style>
-
-.embed-container {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-}
-
-.embed-container iframe,
-.embed-container object,
-.embed-container embed {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-}
-</style>
