@@ -1,26 +1,18 @@
 <template>
 <div>
   <div v-if="user">
-    <v-menu location="bottom" >
-      <template #activator="{ props }">
-        <v-btn class="mr-4"  v-bind="props">
-          <v-avatar>
-            <v-img
-              :src="gravatar"
-              alt="User Menu"
-            />
-          </v-avatar>
-        </v-btn>
-      </template>
-
-      <v-list>
-        <v-list-item
-          title="Logout"
-          @click="logout"
-        >
-        </v-list-item>
-      </v-list>
-    </v-menu>
+    <v-btn 
+        color="orange"
+        icon="mdi-logout-variant"
+        title="Logout"
+        @click="logout">
+    </v-btn>
+    <v-avatar class="mr-4" >
+      <v-img
+        :src="gravatar"
+        alt="User Menu"
+      />
+    </v-avatar>
   </div>
   <div v-else>
     <v-btn class="mr-4" 

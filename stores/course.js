@@ -10,6 +10,7 @@ export const useCourseStore = defineStore("course", {
         showSideNav: true,
       },
       lessons: [],
+      videos: [],
       lesson: {},
       next: {},
       prev: {}
@@ -18,6 +19,12 @@ export const useCourseStore = defineStore("course", {
   getters: {
     courseDuration(state){
       return state.lessons.reduce((acc,l) => acc += parseInt(l.duration || 0), 0)
+    },
+    currentVideo(state){
+      return state.videos.find(v => v.slug === state.lesson.slug);
+    },
+    isAuthorized(state){
+      return state.videos.length > 0;
     }
   },
   actions: {
@@ -35,6 +42,10 @@ export const useCourseStore = defineStore("course", {
         if(d.free) d.icon="mdi-lock-open-variant"
         this.lessons.push(d);
       }
+    },
+    setVideos(vids){
+      this.videos.length = 0;
+      vids.forEach(v => this.videos.push(v));
     },
     async setLesson(slug, id){
       const doc = await queryContent(`/lessons/${slug}`).where({slug: id}).findOne();

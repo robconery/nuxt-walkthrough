@@ -1,19 +1,23 @@
-# Episode 26: Going Full Supabase
-Let's tear through this episode, shall we! We already have the UI in place, we just need to flip over the data.
+# Episode 27: Completing the Completions
+We got a TON done in the last episode so, hopefully, we can keep it up as we're almost there...
 
-## Rolling in Videos
-We're using local content for the lesson data, now let's roll in videos with Vimeo IDs.
+## Setting Up CRUD Policies
+We need to lock down what a user can do here, so let's be sure to contain:
+ 
+ - Inserting/Deleting
+ - Reading
 
- - Adding setters/getters for videos
- - Updating the course nav, progress and video components
+## Setting Up State
+We need a few bits of state, primarily:
 
-## Checking For Completed
-If we have time...
+ - a `completed` array
+ - a `toggleComplete` method
+ - an `isComplete` getter
 
- - Adding setters/getters for completed
- - Updating the course nav, progress and videos with completed info
+## Updating the Components
+After all of the above, we need to hook up:
 
-
-
-
-
+ - The `Commands` component
+ - The lesson page (to load completions)
+ - The course nav, so we know what's completed
+ - The `progress` component

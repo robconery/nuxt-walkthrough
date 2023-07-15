@@ -66,20 +66,38 @@
   </v-layout>
 </template>
 <script setup>
+const db = useSupabaseClient();
+const user = useSupabaseUser();
+
 import {useCourseStore} from "@/stores/course";
 
-let {course,  toggleState, lesson, setCourse, setLessons, setLesson, setNextPrev } = useCourseStore();
-
+let {course,  
+  toggleState, 
+  lesson, 
+  setCourse, 
+  setLessons, 
+  setLesson, 
+  setNextPrev,
+  setVideos,
+} = useCourseStore();
 
 const route = useRoute();
 let slug = route.params.slug;
 let id = route.params.id;
 
-if(course.slug !== slug){
+//if(course.slug !== slug){
   await setCourse(slug);
   await setLessons(slug);
-}
+//}
 
+if(user.value){
+  let res = await db.from("videos").select("*").eq("course_id", course.id);
+  if(res.error){
+    //TODO: handle error on video load
+  } else {
+    setVideos(res.data)
+  }
+}
 
 await setLesson(slug, id);
 await setNextPrev();

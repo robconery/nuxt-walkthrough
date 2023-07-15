@@ -3,20 +3,19 @@
 <v-row class="py-4">
   <v-col md="8" >
     <v-btn
-        color="light-blue"
-        variant="outlined"
-        class="ml-4"
-        @click="setCompleted()"
+      color="info"
+      variant="outlined"
+      class="ml-4"
       >Completed</v-btn>
   </v-col>
   <v-col class="text-right">
     <v-btn
-      color="light-blue"
+      color="info"
       variant="outlined"
       :to="navLesson(prev)"
     >Prev</v-btn>
     <v-btn
-      color="light-blue"
+      color="info"
       variant="outlined"
       class="ml-4"
       :to="navLesson(next)"
@@ -24,20 +23,14 @@
   </v-col>
 </v-row>
 
-
-
-
 </template>
 <script setup>
+const db = useSupabaseClient();
+const user = useSupabaseUser();
+
 import {useCourseStore} from "@/stores/course";
-import {useAuthStore} from "@/stores/auth";
+const {course,lesson,next, prev, currentVideo, isComplete} = useCourseStore();
 
-const {course,lesson,next, prev} = useCourseStore();
-const {markCompleted} = useAuthStore();
-
-const setCompleted = function(){
-  markCompleted(course,lesson)
-}
 
 const navLesson = function(toLesson){
   return `/courses/${course.slug}/${toLesson.slug}`

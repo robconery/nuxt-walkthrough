@@ -1,6 +1,6 @@
 <template>
 
-  <v-navigation-drawer v-model="course.showSideNav" :color="bg"  width="350">
+  <v-navigation-drawer v-model="course.showSideNav" :color="bg"  width="370">
     <v-list v-for="cat in categories" active-class="border">
       <v-list-subheader color="white">{{ cat }}</v-list-subheader>
 
@@ -11,19 +11,16 @@
         density="compact"
         >
         <template #prepend>
-          <v-icon icon="mdi-lock-outline" color="gray-darken-1"></v-icon>
+          <v-icon icon="mdi-circle-outline" class="gray-darken-1"></v-icon>
         </template>
-        <template #prepend v-if="item.free && !ownsCourse(course.slug)">
+        <template #prepend v-if="item.free">
           <v-icon icon="mdi-lock-open-variant-outline" color="green"></v-icon>
         </template>
-        <template #prepend v-if="item.completed">
-          <v-icon icon="mdi-check-outline" color="green"></v-icon>
+        <template #prepend v-if="isAuthorized">
+          <v-icon icon="mdi-play-circle-outline" color="secondary"></v-icon>
         </template>
-        <template #prepend v-if="user.loggedIn && ownsCourse(course.slug)">
-          <v-icon icon="mdi-play-circle-outline" color="orange-darken-1"></v-icon>
-        </template>
-        <template #prepend v-if="user.loggedIn && !ownsCourse(course.slug)">
-          <v-icon icon="mdi-circle-outline" color="gray-darken-1"></v-icon>
+        <template #append>
+          <span class="text-caption">{{ toDuration(item.duration) }}</span>
         </template>
 
 
@@ -37,8 +34,9 @@
 <script setup>
 const router = useRouter()
 import {useCourseStore} from "@/stores/course";
-import {useAuthStore} from "@/stores/auth";
 import { useDisplay } from 'vuetify'
+const {isAuthorized} = useCourseStore();
+const {toDuration} = useTime();
 
 const bg = computed(() => {
   const { name } = useDisplay();
@@ -54,7 +52,6 @@ const bg = computed(() => {
 })
 
 const { lessons, course } = useCourseStore();
-const { user, ownsCourse } = useAuthStore();
 
 const categories = computed(() => {
   const cats = lessons.map(l => l.category);
