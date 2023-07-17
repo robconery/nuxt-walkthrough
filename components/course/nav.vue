@@ -19,6 +19,9 @@
         <template #prepend v-if="isAuthorized">
           <v-icon icon="mdi-play-circle-outline" color="secondary"></v-icon>
         </template>
+        <template #prepend v-if="isComplete(item)">
+          <v-icon icon="mdi-check" color="success"></v-icon>
+        </template>
         <template #append>
           <span class="text-caption">{{ toDuration(item.duration) }}</span>
         </template>
@@ -50,8 +53,12 @@ const bg = computed(() => {
   }
   return "transparent"
 })
+const { lessons, course, completed } = useCourseStore();
 
-const { lessons, course } = useCourseStore();
+const isComplete = function(item){
+  const found = completed.find(c => item.slug === c.lesson);
+  return completed.indexOf(found) >= 0;
+}
 
 const categories = computed(() => {
   const cats = lessons.map(l => l.category);

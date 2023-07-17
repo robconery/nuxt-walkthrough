@@ -10,21 +10,17 @@
 </template>
 
 <script setup>
-import {useAuthStore} from "@/stores/auth"
 import {useCourseStore} from "@/stores/course"
-
-const {user} = useAuthStore();
-const {lessons, courseDuration} = useCourseStore();
+const {lessons, courseDuration, completed} = useCourseStore();
 
 const progress = computed(() => {
   //get all lessons which include user.completed
   const duration = lessons.reduce((acc,l) => {
-    const found = user.completed.find(c => c.slug === l.slug);
-    if(found){
-      acc += parseFloat(l.duration) || 0;
-    }
+    const found = completed.find(c => c.lesson === l.slug);
+    if(found) acc += parseFloat(l.duration) || 0;
     return acc;
   }, 0);
+  console.log(duration);
   const percentage = (duration/courseDuration) * 100;
   return percentage;
 });

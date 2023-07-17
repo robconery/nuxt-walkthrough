@@ -79,6 +79,7 @@ let {course,
   setLesson, 
   setNextPrev,
   setVideos,
+  setCompleted
 } = useCourseStore();
 
 const route = useRoute();
@@ -96,6 +97,12 @@ if(user.value){
     //TODO: handle error on video load
   } else {
     setVideos(res.data)
+  }
+  res = await db.from("completed").select("*").eq("course_id", course.id);
+  if(res.error){
+    //TODO: handle error on video load
+  } else {
+    setCompleted(res.data)
   }
 }
 

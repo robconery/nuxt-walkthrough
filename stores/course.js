@@ -9,6 +9,7 @@ export const useCourseStore = defineStore("course", {
         github: "",
         showSideNav: true,
       },
+      completed: [],
       lessons: [],
       videos: [],
       lesson: {},
@@ -46,6 +47,10 @@ export const useCourseStore = defineStore("course", {
     setVideos(vids){
       this.videos.length = 0;
       vids.forEach(v => this.videos.push(v));
+    },
+    setCompleted(vids){
+      this.completed.length = 0;
+      vids.forEach(v => this.completed.push(v));
     },
     async setLesson(slug, id){
       const doc = await queryContent(`/lessons/${slug}`).where({slug: id}).findOne();
