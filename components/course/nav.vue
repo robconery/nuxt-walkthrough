@@ -11,13 +11,14 @@
         density="compact"
         >
         <template #prepend>
-          <v-icon icon="mdi-circle-outline" class="gray-darken-1"></v-icon>
+          <v-icon icon="mdi-circle-outline" color="white"></v-icon>
         </template>
         <template #prepend v-if="item.free">
           <v-icon icon="mdi-lock-open-variant-outline" color="green"></v-icon>
         </template>
         <template #prepend v-if="isAuthorized">
-          <v-icon icon="mdi-play-circle-outline" color="secondary"></v-icon>
+          <v-icon icon="mdi-play-circle-outline" color="grey-darken-1
+"></v-icon>
         </template>
         <template #prepend v-if="isComplete(item)">
           <v-icon icon="mdi-check" color="success"></v-icon>

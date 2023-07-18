@@ -1,18 +1,12 @@
-# Episode 29: The Stripe Webhook Receiver
-Stripe is going to notify us when a sale happens, which means we need to have a receiver, somewhere.
+# Episode 30: Ship It!
+We're ready to deploy... my goodness. I cover deployment in detail in the book, so for this episode we'll focus on static deployment to GitHub.
 
-## The Webhook
-We have a simple task:
+## Off Camera
+I forgot to reload the lessons in the last episode, so I did that and also tweaked the colors a bit on the lesson page. Other than that... everything worked even though we changed our `authorizations` table.
 
- - Save the ping (as `JSONB`)
- - Figure out what was bought and then authorize the course for the user
+## Checking the App
+We haven't built out app as a static app just yet, so let's do that and dive right in. **There will be problems**.
 
-## Cleaning Up
-We wiped out some code by moving to Supabase, so let's start by cleaning a few things out.
-
-## Supabase Edge Functions
-One of the simpler things we can do, I hope, it to use Supabase edge functions. We'll get to know them and see what's involved.
-
-## Our Own API
-We could also use our own API, which means we can't deploy this as a static app. Is this a better choice?
+## Fixing Things
+The static builder is trying to turn a server-based app into a static one, so let's fix the problems the crawler encountered.
 
