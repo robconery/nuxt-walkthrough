@@ -36,7 +36,7 @@
   </v-navigation-drawer>
 </template>
 <script setup>
-const router = useRouter()
+
 import {useCourseStore} from "@/stores/course";
 import { useDisplay } from 'vuetify'
 const {isAuthorized} = useCourseStore();

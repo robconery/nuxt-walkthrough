@@ -56,7 +56,7 @@
   </div>
 </template>
 <script setup>
-const supabase = useSupabaseClient();
+
 
 let loginForm = reactive({
   email: "robconery@gmail.com",
@@ -66,9 +66,10 @@ let loginForm = reactive({
 });
 
 const handleLogin = async () => {
+  const db = useSupabaseClient();
   try {
     loginForm.loading = true
-    const { error } = await supabase.auth.signInWithOtp({ email: loginForm.email })
+    const { error } = await db.auth.signInWithOtp({ email: loginForm.email })
     if (error) throw error
     loginForm.success = true;
   } catch (error) {

@@ -1,6 +1,9 @@
 import shiki from 'shiki'
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  experimental: {
+    payloadExtraction: false
+  },
   modules: [    
     '@nuxt/content',
     '@pinia/nuxt',

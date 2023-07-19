@@ -36,7 +36,10 @@ import {useCourseStore} from "@/stores/course";
 const {course,lesson,next, prev, currentVideo, completed} = useCourseStore();
 
 const isComplete = function() {
-  return completed.find(c => c.video_id === currentVideo.id)
+  if(currentVideo){
+    return completed.find(c => c.video_id === currentVideo.id)
+  }
+  return false;
 }
 
 const completeClicked = async function(){
